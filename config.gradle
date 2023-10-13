@@ -1,12 +1,9 @@
 // 依赖版本管理
 ext {
-    version:
+    version =
     [
             // 统一版本管理
             "lombokVersion"            : '1.18.26',
-            "springBootVersion"        : '3.1.4',
-            "springCloudVersion"       : '',
-            "springCloudAlibabaVersion": '',
             "mysqlVersion"             : '8.0.33',
             "mybatisSpringBootVersion" : '2.0.1',
             "elasticsearchVersion"     : '8.6.2',
@@ -29,7 +26,7 @@ ext {
             "netJsonVersion"           : '2.4'
     ]
 
-    dependencies:
+    dependencies =
     [
             "lombok"                     : "org.projectlombok:lombok:${version.lombokVersion}",
             "mysql-connector-java"       : "mysql:mysql-connector-java:${version.mysqlVersion}",

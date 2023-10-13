@@ -1,31 +1,9 @@
 // 构建 gradle 脚本自身需要的资源
 buildscript {
     ext {
-        // 统一版本管理
-        lombokVersion = '1.18.26'
         springBootVersion = '3.1.4'
-        springCloudVersion = ''
-        springCloudAlibabaVersion = ''
-        mysqlVersion = '8.0.33'
-        mybatisSpringBootVersion = '2.0.1'
-        elasticsearchVersion = '8.6.2'
-        jakartaVersion = '2.1.1'
-        pagehelperVersion = '1.4.6'
-        druidSpringBootVersion = '1.2.16'
-        jwtVersion = '4.3.0'
-        swaggerVersion = '3.0.0'
-        fastjsonVersion = '2.0.26'
-        guavaVersion = '32.0.0-jre'
-        hutoolVersion = '5.8.20'
-        mybatisVersion = '3.5.11'
-        reflectionsVersion = '0.10.2'
-        springAspectsVersion = '6.0.6'
-        aspectjtoolsVersion = '1.9.19'
-        mybatisPlusVersion = '3.5.3.1'
-        zxingVersion = '3.0.0'
-        httpclientVersion = '4.5.9'
-        jooqVersion = '0.9.15'
-        netJsonVersion = '2.4'
+//        springCloudVersion = ''
+//        springCloudAlibabaVersion = ''
     }
 
     // 仓库
@@ -58,10 +36,12 @@ allprojects {
 
 }
 
+apply from: 'config.gradle'
+
 // 配置所有子项目
 subprojects {
     apply plugin: 'java'
-    apply plugin: 'java-library' //api
+    apply plugin: 'java-library'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
 
@@ -77,55 +57,9 @@ subprojects {
 
     dependencyManagement {
         dependencies {
-            dependency "org.projectlombok:lombok:${lombokVersion}"
-            dependency "mysql:mysql-connector-java:${mysqlVersion}"
-            dependency "org.mybatis.spring.boot:mybatis-spring-boot-starter:${mybatisSpringBootVersion}"
-            dependency "com.baomidou:mybatis-plus-boot-starter:${mybatisPlusVersion}"
-            dependency "io.springfox:springfox-swagger2:${swaggerVersion}"
-            dependency "org.jooq:jool-java-8:${jooqVersion}"
-            dependency "com.google.guava:guava:${guavaVersion}"
-            dependency "com.auth0:java-jwt:${jwtVersion}"
-            dependency "com.alibaba:fastjson:${fastjsonVersion}"
-            dependency "org.mybatis:mybatis:${mybatisVersion}"
-            dependency "cn.hutool:hutool-all:${hutoolVersion}"
-            dependency "org.apache.httpcomponents:httpclient:${httpclientVersion}"
-//            dependency "net.sf.json-lib:json-lib:${netJsonVersion}"
+            for (depJar in rootProject.ext.dependencies) {
+                dependency depJar.value
+            }
         }
     }
 }
-
-project(':degree-common') {
-    dependencies {
-        implementation 'org.springframework.boot:spring-boot-starter-web'
-        implementation 'org.apache.commons:commons-lang3'
-        implementation 'org.aspectj:aspectjtools'
-        implementation 'com.google.guava:guava'
-        implementation 'com.auth0:java-jwt'
-        implementation 'com.alibaba:fastjson'
-        implementation 'org.mybatis:mybatis'
-        implementation 'cn.hutool:hutool-all'
-        implementation 'org.apache.httpcomponents:httpclient'
-    }
-}
-
-project(':degree-parent') {
-    dependencies {
-        project(':degree-common')
-        implementation 'org.springframework.boot:spring-boot-starter'
-        implementation 'org.springframework.boot:spring-boot-starter-web'
-        implementation 'org.springframework.boot:spring-boot-starter-validation'
-        implementation 'co.elastic.clients:elasticsearch-java'
-        implementation 'org.apache.commons:commons-lang3'
-        implementation 'io.springfox:springfox-swagger2'
-        implementation 'org.aspectj:aspectjtools'
-        implementation 'org.springframework.boot:spring-boot-starter-websocket'
-        implementation 'com.baomidou:mybatis-plus-boot-starter'
-        implementation 'org.jooq:jool-java-8'
-        implementation 'com.google.guava:guava'
-        implementation 'com.alibaba:fastjson'
-        implementation 'cn.hutool:hutool-all'
-
-        testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    }
-}
-

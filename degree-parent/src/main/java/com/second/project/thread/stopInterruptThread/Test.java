@@ -9,6 +9,6 @@ public class Test {
     public static void main(String[] args) {
         StopServerThread serverThread = new StopServerThread();
         serverThread.start();
-        serverThread.stop();
+        serverThread.interrupt();
     }
 }

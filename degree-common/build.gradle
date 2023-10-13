@@ -1,1 +1,21 @@
 description '项目依赖服务'
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.apache.commons:commons-lang3'
+    implementation 'org.aspectj:aspectjtools'
+    implementation 'com.google.guava:guava'
+    implementation 'com.auth0:java-jwt'
+    implementation 'com.alibaba:fastjson'
+    implementation 'org.mybatis:mybatis'
+    implementation 'cn.hutool:hutool-all'
+    implementation 'org.apache.httpcomponents:httpclient'
+}
+
+jar {
+    enabled = true
+}
+
+bootJar {
+    enabled = false
+}

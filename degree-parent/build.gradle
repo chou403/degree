@@ -1,1 +1,21 @@
 description '业务服务'
+
+dependencies {
+    api project(':degree-common')
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'co.elastic.clients:elasticsearch-java'
+    implementation 'org.apache.commons:commons-lang3'
+    implementation 'io.springfox:springfox-swagger2'
+    implementation 'org.aspectj:aspectjtools'
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+    implementation 'com.baomidou:mybatis-plus-boot-starter'
+    implementation 'org.jooq:jool-java-8'
+    implementation 'com.google.guava:guava'
+    implementation 'com.alibaba:fastjson'
+    implementation 'cn.hutool:hutool-all'
+    implementation 'mysql:mysql-connector-java'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
