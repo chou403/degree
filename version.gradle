@@ -1,0 +1,47 @@
+// 依赖版本管理
+ext {
+    version:
+    [
+            // 统一版本管理
+            "lombokVersion"            : '1.18.26',
+            "springBootVersion"        : '3.1.4',
+            "springCloudVersion"       : '',
+            "springCloudAlibabaVersion": '',
+            "mysqlVersion"             : '8.0.33',
+            "mybatisSpringBootVersion" : '2.0.1',
+            "elasticsearchVersion"     : '8.6.2',
+            "jakartaVersion"           : '2.1.1',
+            "pagehelperVersion"        : '1.4.6',
+            "druidSpringBootVersion"   : '1.2.16',
+            "jwtVersion"               : '4.3.0',
+            "swaggerVersion"           : '3.0.0',
+            "fastjsonVersion"          : '2.0.26',
+            "guavaVersion"             : '32.0.0-jre',
+            "hutoolVersion"            : '5.8.20',
+            "mybatisVersion"           : '3.5.11',
+            "reflectionsVersion"       : '0.10.2',
+            "springAspectsVersion"     : '6.0.6',
+            "aspectjtoolsVersion"      : '1.9.19',
+            "mybatisPlusVersion"       : '3.5.3.1',
+            "zxingVersion"             : '3.0.0',
+            "httpclientVersion"        : '4.5.9',
+            "jooqVersion"              : '0.9.15',
+            "netJsonVersion"           : '2.4'
+    ]
+
+    dependencies:
+    [
+            "lombok"                     : "org.projectlombok:lombok:${version.lombokVersion}",
+            "mysql-connector-java"       : "mysql:mysql-connector-java:${version.mysqlVersion}",
+            "mybatis-spring-boot-starter": "org.mybatis.spring.boot:mybatis-spring-boot-starter:${version.mybatisSpringBootVersion}",
+            "mybatis-plus-boot-starter"  : "com.baomidou:mybatis-plus-boot-starter:${version.mybatisPlusVersion}",
+            "springfox-swagger2"         : "io.springfox:springfox-swagger2:${version.swaggerVersion}",
+            "jool-java-8"                : "org.jooq:jool-java-8:${version.jooqVersion}",
+            "guava"                      : "com.google.guava:guava:${version.guavaVersion}",
+            "ava-jwt"                    : "com.auth0:java-jwt:${version.jwtVersion}",
+            "fastjson"                   : "com.alibaba:fastjson:${version.fastjsonVersion}",
+            "mybatis"                    : "org.mybatis:mybatis:${version.mybatisVersion}",
+            "hutool-all"                 : "cn.hutool:hutool-all:${version.hutoolVersion}",
+            "httpclient"                 : "org.apache.httpcomponents:httpclient:${version.httpclientVersion}"
+    ]
+}

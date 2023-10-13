@@ -1,0 +1,4 @@
+rootProject.name = 'degree'
+include 'degree-common'
+include 'degree-parent'
+
