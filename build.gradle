@@ -1,10 +1,8 @@
+apply from: 'config.gradle'
+
 // 构建 gradle 脚本自身需要的资源
 buildscript {
-    ext {
-        springBootVersion = '3.1.4'
-//        springCloudVersion = ''
-//        springCloudAlibabaVersion = ''
-    }
+    ext.springBootVersion = '3.1.4'
 
     // 仓库
     repositories {
@@ -15,7 +13,7 @@ buildscript {
 
     dependencies {
         // spring-boot-gradle 插件，方便版本管理
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
     }
 }
 
@@ -36,8 +34,6 @@ allprojects {
 
 }
 
-apply from: 'config.gradle'
-
 // 配置所有子项目
 subprojects {
     apply plugin: 'java'
@@ -51,8 +47,12 @@ subprojects {
     dependencies {
         annotationProcessor 'org.projectlombok:lombok'
         implementation 'org.projectlombok:lombok'
-        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+        testImplementation rootProject.ext.dependencies.junitJupiterApi
+        testRuntimeOnly rootProject.ext.dependencies.junitJupiterEngine
+        implementation rootProject.ext.dependencies.tomcatEmbedCore
+        implementation rootProject.ext.dependencies.tomcatEmbedEl
+        implementation rootProject.ext.dependencies.snakeyaml
+        implementation rootProject.ext.dependencies.jacksonDatabind
     }
 
     dependencyManagement {
