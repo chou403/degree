@@ -18,6 +18,8 @@ ext {
                     "snakeyamlVersion"        : '2.2',
                     "jacksonDatabindVersion"  : '2.15.3',
                     "junitJupiterVersion"     : '5.8.1',
+                    "validationApiVersion"    : '3.0.2',
+                    "jakartaServletApiVersion": '6.0.0',
 
 //            "elasticsearchVersion"     : '8.6.2',
 //            "jakartaVersion"           : '2.1.1',
@@ -50,6 +52,8 @@ ext {
                     "jacksonDatabind"            : "com.fasterxml.jackson.core:jackson-databind:$version.jacksonDatabindVersion",
                     "junitJupiterApi"            : "org.junit.jupiter:junit-jupiter-api:$version.junitJupiterVersion",
                     "junitJupiterEngine"         : "org.junit.jupiter:junit-jupiter-engine:$version.junitJupiterVersion",
+                    "validationApi"              : "jakarta.validation:jakarta.validation-api:$version.validationApiVersion",
+                    "jakartaServletApi"          : "jakarta.servlet:jakarta.servlet-api:$version.jakartaServletApiVersion",
             ]
 
 }

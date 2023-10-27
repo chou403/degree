@@ -10,6 +10,9 @@ dependencies {
     implementation 'org.mybatis:mybatis'
     implementation 'cn.hutool:hutool-all'
     implementation 'org.apache.httpcomponents:httpclient'
+    implementation 'jakarta.validation:jakarta.validation-api'
+    implementation 'jakarta.servlet:jakarta.servlet-api'
+
 }
 
 jar {

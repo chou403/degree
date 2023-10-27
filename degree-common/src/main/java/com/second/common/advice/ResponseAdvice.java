@@ -1,6 +1,6 @@
 package com.second.common.advice;
 
-import com.second.common.domain.Result;
+import com.second.common.bean.reponse.Result;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;

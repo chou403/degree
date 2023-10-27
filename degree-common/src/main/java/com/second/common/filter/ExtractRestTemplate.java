@@ -1,7 +1,7 @@
 package com.second.common.filter;
 
-import com.second.common.bean.reponse.ResponseBean;
-import com.second.common.bean.reponse.ResponseCode;
+import com.second.common.bean.reponse.Result;
+import com.second.common.bean.reponse.StatusEnum;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
@@ -18,8 +18,8 @@ public class ExtractRestTemplate extends FilterRestTemplate{
         super(restTemplate);
     }
 
-    public <T> ResponseBean<T> postForEntityWithNoException(String url, Object request, Class<T> responseType, Object... uriVariables) {
-        ResponseBean<T> restResponseDTO = new ResponseBean<T>();
+    public <T> Result<T> postForEntityWithNoException(String url, Object request, Class<T> responseType, Object... uriVariables) {
+        Result<T> restResponseDTO = new Result<T>();
         ResponseEntity<T> tResponseEntity;
         try {
             tResponseEntity = restTemplate.postForEntity(url, request, responseType, uriVariables);
@@ -27,7 +27,7 @@ public class ExtractRestTemplate extends FilterRestTemplate{
 //            restResponseDTO.setMessage(tResponseEntity.getStatusCode());
             restResponseDTO.setCode(tResponseEntity.getStatusCodeValue());
         }catch (Exception e){
-            restResponseDTO.setCode(ResponseCode.UNKNOWN_ERROR.getCode());
+            restResponseDTO.setCode(StatusEnum.UNKNOWN_ERROR.getCode());
             restResponseDTO.setMessage(e.getMessage());
             restResponseDTO.setData(null);
         }

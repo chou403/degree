@@ -2,7 +2,7 @@ package com.second.project.controller;
 
 import cn.hutool.extra.qrcode.QrCodeUtil;
 import com.alibaba.fastjson2.JSON;
-import com.second.common.bean.reponse.ResponseBean;
+import com.second.common.bean.reponse.Result;
 import com.second.project.domains.dto.CommonLoginDTO;
 import com.second.project.entity.UserToken;
 import com.second.project.mapper.UserTokenMapper;
@@ -42,17 +42,17 @@ public class LoginController {
 
     @PostMapping("/commonLogin")
     public Object loginCommon(@RequestBody  CommonLoginDTO dto) {
-        ResponseBean responseBean = new ResponseBean();
+        Result result = new Result();
 
         try {
-            responseBean.setData(loginService.loginCommon(dto));
+            result.setData(loginService.loginCommon(dto));
         } catch (Exception e) {
             e.printStackTrace();
-            responseBean.setCode(500);
-            responseBean.setMessage(e.getMessage());
+            result.setCode(500);
+            result.setMessage(e.getMessage());
         }
 
-        return responseBean;
+        return result;
     }
 
     @PostMapping("/getLoginQr")
@@ -90,15 +90,15 @@ public class LoginController {
     public Object bindUserIdAndToken(@RequestParam("token") String token,
                                      @RequestParam("userId") Integer userId,
                                      @RequestParam(required = false, value = "projId") Integer projId) {
-        ResponseBean responseBean = new ResponseBean();
+        Result result = new Result();
         try {
-            responseBean.setData(loginService.bindUserIdAndToken(userId, token, projId));
+            result.setData(loginService.bindUserIdAndToken(userId, token, projId));
         } catch (Exception e) {
             e.printStackTrace();
-            responseBean.setCode(500);
-            responseBean.setMessage(e.getMessage());
+            result.setCode(500);
+            result.setMessage(e.getMessage());
         }
 
-        return responseBean;
+        return result;
     }
 }
