@@ -3,10 +3,13 @@ package com.second.project.controller;
 import cn.hutool.extra.qrcode.QrCodeUtil;
 import com.alibaba.fastjson2.JSON;
 import com.second.common.bean.reponse.Result;
+import com.second.common.util.JsonHelper;
 import com.second.project.domains.dto.CommonLoginDTO;
+import com.second.project.domains.dto.TestValidDTO;
 import com.second.project.entity.UserToken;
 import com.second.project.mapper.UserTokenMapper;
 import com.second.project.service.LoginService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
- * {@code @author}  JSY
+ * {@code @author}  chouchou
  * {@code @date} 2023/7/14
  * {@code @description} 登录
  */
@@ -100,5 +103,11 @@ public class LoginController {
         }
 
         return result;
+    }
+
+    @PostMapping("/test-valid")
+    public Result testValid(@Valid @RequestBody TestValidDTO dto) {
+        log.info("参数：{}", JsonHelper.parseToJson(dto));
+        return new Result<>();
     }
 }

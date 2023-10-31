@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 /**
- * {@code @author} JSY
+ * {@code @author} chouchou
  * {@code @date} 2022/11/17
  * {@code @className} 查询路径下的所有统一后缀文件
  * {@code @description} 1

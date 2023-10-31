@@ -6,7 +6,7 @@ import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
 /**
- * {@code @author}  JSY
+ * {@code @author}  chouchou
  * {@code @date} 2023/9/13
  * {@code @description} aspect
  */

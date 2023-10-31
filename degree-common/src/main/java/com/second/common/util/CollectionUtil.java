@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
- * {@code @author}  JSY
+ * {@code @author}  chouchou
  * {@code @date} 2023/8/22
  * {@code @description} collection utils
  */

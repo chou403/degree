@@ -11,7 +11,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * 线程池
- * {@code @author}  JSY
+ * {@code @author}  chouchou
  * {@code @date}    2023/4/10 18:23
  */
 @Slf4j

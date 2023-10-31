@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
- * {@code @author}  JSY
+ * {@code @author}  chouchou
  * {@code @date} 2023/7/15
  * {@code @description} user
  */

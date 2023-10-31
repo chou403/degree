@@ -7,7 +7,7 @@ import org.springframework.core.type.AnnotationMetadata;
 import java.util.Map;
 
 /**
- * {@code @author} JSY
+ * {@code @author} chouchou
  * {@code @date} 2023/3/27
  * {@code @className} TestImportBeanDefinitionRegistrar
  * {@code @description} bean definition registrar

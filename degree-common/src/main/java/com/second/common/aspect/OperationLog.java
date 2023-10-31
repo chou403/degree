@@ -3,7 +3,7 @@ package com.second.common.aspect;
 import java.lang.annotation.*;
 
 /**
- * {@code @author} JSY
+ * {@code @author} chouchou
  * {@code @date} 2022/12/2
  * {@code @className} OperationLog
  * {@code @description} 记录操作

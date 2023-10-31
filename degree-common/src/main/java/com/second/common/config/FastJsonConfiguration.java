@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * {@code @author} JSY
+ * {@code @author} chouchou
  * {@code @date} 2023/4/4
  * {@code @className} FastJsonConfiguration
  * {@code @description} 处理fastjson 返回结果 展示

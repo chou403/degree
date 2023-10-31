@@ -9,7 +9,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Component;
 
 /**
- * {@code @author}  JSY
+ * {@code @author}  chouchou
  * {@code @date} 2023/9/7
  * {@code @description} conditional property test
  */

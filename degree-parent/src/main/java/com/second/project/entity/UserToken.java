@@ -7,7 +7,7 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * {@code @author}  JSY
+ * {@code @author}  chouchou
  * {@code @date} 2023/7/14
  * {@code @description} QrLoginToken
  */

@@ -5,7 +5,7 @@ import com.second.common.util.SmallTool;
 import java.util.concurrent.CompletableFuture;
 
 /**
- * {@code @author} JSY
+ * {@code @author} chouchou
  * {@code @date} 2023/3/29
  * {@code @className} SupplyAsync_01
  * {@code @description} 厨师炒菜 打饭

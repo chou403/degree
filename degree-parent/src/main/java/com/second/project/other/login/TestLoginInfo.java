@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 测试登录 dto
- * {@code @author}  JSY
+ * {@code @author}  chouchou
  * {@code @date}    2023/4/12 15:59
  */
 @RestController

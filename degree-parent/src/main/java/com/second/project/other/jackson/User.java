@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * {@code @author} JSY
+ * {@code @author} chouchou
  * {@code @date} 2023/4/7
  * {@code @className} User
  * {@code @description} 1

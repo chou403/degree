@@ -7,7 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  * 对 FilterRestTemplate 进行包装扩展
- * {@code @author}  JSY
+ * {@code @author}  chouchou
  * {@code @date}    2023/5/4 15:05
  */
 public class ExtractRestTemplate extends FilterRestTemplate{
@@ -25,10 +25,10 @@ public class ExtractRestTemplate extends FilterRestTemplate{
             tResponseEntity = restTemplate.postForEntity(url, request, responseType, uriVariables);
             restResponseDTO.setData(tResponseEntity.getBody());
 //            restResponseDTO.setMessage(tResponseEntity.getStatusCode());
-            restResponseDTO.setCode(tResponseEntity.getStatusCodeValue());
+            restResponseDTO.setCode(tResponseEntity.getStatusCode().value());
         }catch (Exception e){
             restResponseDTO.setCode(StatusEnum.UNKNOWN_ERROR.getCode());
-            restResponseDTO.setMessage(e.getMessage());
+            restResponseDTO.setMsg(e.getMessage());
             restResponseDTO.setData(null);
         }
         return restResponseDTO;

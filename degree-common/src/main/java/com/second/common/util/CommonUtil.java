@@ -3,7 +3,7 @@ package com.second.common.util;
 import java.math.BigDecimal;
 
 /**
- * {@code @author} JSY
+ * {@code @author} chouchou
  * {@code @date} 2023/2/6
  * {@code @className} commonUtil
  * {@code @description} 记录常用 util

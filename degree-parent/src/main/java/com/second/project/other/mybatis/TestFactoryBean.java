@@ -5,7 +5,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.FactoryBean;
 
 /**
- * {@code @author} JSY
+ * {@code @author} chouchou
  * {@code @date} 2023/3/27
  * {@code @className} TestFactoryBean
  * {@code @description} factory bean

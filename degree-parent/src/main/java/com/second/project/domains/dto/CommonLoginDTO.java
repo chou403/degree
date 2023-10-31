@@ -3,7 +3,7 @@ package com.second.project.domains.dto;
 import lombok.Data;
 
 /**
- * {@code @author}  JSY
+ * {@code @author}  chouchou
  * {@code @date} 2023/7/15
  * {@code @description} 登录 参数
  */

@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.FilenameFilter;
 
 /**
- * {@code @author} JSY
+ * {@code @author} chouchou
  * {@code @date} 2022/11/17
  * {@code @className} FilterBySuffix
  * {@code @description} 过滤文件后缀

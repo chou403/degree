@@ -1,7 +1,7 @@
 package com.second.common.util;
 
 /**
- * {@code @author} JSY
+ * {@code @author} chouchou
  * {@code @date} 2022/11/15
  * {@code @className} ReflectUtils
  * {@code @description} 1

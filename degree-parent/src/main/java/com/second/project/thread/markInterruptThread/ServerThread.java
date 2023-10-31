@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 
 /**
- * {@code @author}  JSY
+ * {@code @author}  chouchou
  * {@code @date} 2023/8/23
  * {@code @description} ServerThread
  */

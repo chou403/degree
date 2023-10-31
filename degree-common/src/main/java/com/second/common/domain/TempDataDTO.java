@@ -5,7 +5,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 /**
- * {@code @author}  JSY
+ * {@code @author}  chouchou
  * {@code @date} 2023/8/21
  * {@code @description} temp data dto
  */

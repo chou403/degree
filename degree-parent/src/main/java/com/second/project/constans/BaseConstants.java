@@ -1,7 +1,7 @@
 package com.second.project.constans;
 
 /**
- * {@code @author}  JSY
+ * {@code @author}  chouchou
  * {@code @date} 2023/7/14
  * {@code @description} base constans
  */

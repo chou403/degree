@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import javax.sql.DataSource;
 
 /**
- * {@code @author} JSY
+ * {@code @author} chouchou
  * {@code @date} 2022/12/2
  * {@code @className} OperationLogServiceImpl
  * {@code @description} 操作记录

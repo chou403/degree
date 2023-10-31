@@ -9,18 +9,18 @@ import java.io.Serializable;
 
 /**
  * 服务器返回给客户端的统一数据封装
- * {@code @author}  JSY
+ * {@code @author}  chouchou
  * {@code @date}    2023/4/7 14:59
  */
 @Data
 @NoArgsConstructor
 public class Result<T> implements Serializable {
-    private static final long serialVersionUID = -367310071802308298L;
+//    private static final long serialVersionUID = -367310071802308298L;
 
     /**
      * 状态值
      */
-    private Boolean status;
+    private Boolean success;
 
     /**
      * 状态码
@@ -30,7 +30,7 @@ public class Result<T> implements Serializable {
     /**
      * 状态信息
      */
-    private String message;
+    private String msg;
 
     /**
      * 返回的结果
@@ -41,39 +41,39 @@ public class Result<T> implements Serializable {
      * 构造函数
      *
      * @param code    状态码
-     * @param message 提示信息
+     * @param msg 提示信息
      */
-    public Result(Integer code, String message) {
-        this.status = false;
+    public Result(Integer code, String msg) {
+        this.success = false;
         this.code = code;
-        this.message = message;
+        this.msg = msg;
     }
 
     /**
      * 构造函数
      *
-     * @param status  状态
+     * @param success  状态
      * @param code    状态码
-     * @param message 提示信息
+     * @param msg 提示信息
      */
-    public Result(Boolean status, Integer code, String message) {
-        this.status = status;
+    public Result(Boolean success, Integer code, String msg) {
+        this.success = success;
         this.code = code;
-        this.message = message;
+        this.msg = msg;
     }
 
     /**
      * 构造函数
      *
-     * @param status  状态
+     * @param success  状态
      * @param code    状态码
-     * @param message 提示信息
-     * @param data  结果
+     * @param msg 提示信息
+     * @param data    结果
      */
-    public Result(Boolean status, Integer code, String message, T data) {
-        this.status = status;
+    public Result(Boolean success, Integer code, String msg, T data) {
+        this.success = success;
         this.code = code;
-        this.message = message;
+        this.msg = msg;
         this.data = data;
     }
 
@@ -121,7 +121,7 @@ public class Result<T> implements Serializable {
      * @return 返回结果
      */
     public static Result success() {
-        return new Result(true, SUCCESS_CODE, SUCCESS_MSG);
+        return new Result<>(true, SUCCESS_CODE, SUCCESS_MSG);
     }
 
     /**
@@ -130,7 +130,7 @@ public class Result<T> implements Serializable {
      * @return 返回结果
      */
     public static <T> Result success(T result) {
-        return new Result(true, SUCCESS_CODE, SUCCESS_MSG, result);
+        return new Result<>(true, SUCCESS_CODE, SUCCESS_MSG, result);
     }
 
     /**
@@ -148,12 +148,12 @@ public class Result<T> implements Serializable {
      * 返回异常的
      *
      * @param t       泛型枚举
-     * @param message 提示信息
+     * @param msg 提示信息
      * @param <T>     泛型
      * @return 返回 result
      */
-    public static <T extends Enum> Result error(T t, String message) {
-        return error(t, CODE, MESSAGE, message);
+    public static <T extends Enum> Result error(T t, String msg) {
+        return error(t, CODE, MESSAGE, msg);
     }
 
     /**
@@ -163,18 +163,28 @@ public class Result<T> implements Serializable {
      * @return 返回 result
      */
     public static Result error(Integer code) {
-        return new Result(code, null);
+        return new Result<>(code, null);
+    }
+
+    /**
+     * 返回异常的
+     *
+     * @param msg 提示信息
+     * @return 返回 result
+     */
+    public static Result error(String msg) {
+        return new Result<>(ERROR_CODE, msg);
     }
 
     /**
      * 返回异常的
      *
      * @param code    状态码
-     * @param message 提示信息
+     * @param msg 提示信息
      * @return 返回 result
      */
-    public static Result error(Integer code, String message) {
-        return new Result(code, message);
+    public static Result error(Integer code, String msg) {
+        return new Result<>(code, msg);
     }
 
     /**
@@ -186,14 +196,14 @@ public class Result<T> implements Serializable {
      * @param <T>        泛型
      * @return 返回 result 对象
      */
-    public static <T extends Enum> Result error(T t, String codeMethod, String msgMethod, String message) {
+    public static <T extends Enum> Result error(T t, String codeMethod, String msgMethod, String msg) {
         try {
             Class<?> aClass = t.getClass();
             Integer code = (Integer) aClass.getMethod(codeMethod).invoke(t);
-            message = StringUtils.isEmpty(message) ? aClass.getMethod(msgMethod).invoke(t).toString() : message;
-            return new Result(code, message);
+            msg = StringUtils.isEmpty(msg) ? aClass.getMethod(msgMethod).invoke(t).toString() : msg;
+            return new Result<>(code, msg);
         } catch (Exception e) {
-            return new Result(ERROR_CODE, e.getMessage());
+            return new Result<>(ERROR_CODE, e.getMessage());
         }
     }
 

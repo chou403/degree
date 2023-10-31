@@ -3,7 +3,7 @@ package com.second.project.other.mybatis.mapper;
 import org.apache.ibatis.annotations.Select;
 
 /**
- * {@code @author} JSY
+ * {@code @author} chouchou
  * {@code @date} 2023/3/27
  * {@code @className} UserMapper
  * {@code @description} user mapper

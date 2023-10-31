@@ -1,7 +1,7 @@
 package com.second.project.thread.interruptThread;
 
 /**
- * {@code @author}  JSY
+ * {@code @author}  chouchou
  * {@code @date} 2023/8/23
  * {@code @description} interrupt thread
  */

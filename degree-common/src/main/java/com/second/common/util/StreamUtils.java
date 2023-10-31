@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * {@code @author}  JSY
+ * {@code @author}  chouchou
  * {@code @date} 2023/8/21
  * {@code @description} stram 相关 utils 示例
  */

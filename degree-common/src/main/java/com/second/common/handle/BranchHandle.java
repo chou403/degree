@@ -2,7 +2,7 @@ package com.second.common.handle;
 
 /**
  * if 分支操作
- * {@code @author}  JSY
+ * {@code @author}  chouchou
  * {@code @date}    2023/4/23 17:48
  */
 @FunctionalInterface

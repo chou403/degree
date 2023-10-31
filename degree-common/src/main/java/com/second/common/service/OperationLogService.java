@@ -3,7 +3,7 @@ package com.second.common.service;
 import com.second.common.domain.OperationLogDTO;
 
 /**
- * {@code @author} JSY
+ * {@code @author} chouchou
  * {@code @date} 2022/12/2
  * {@code @className} OperationLogService
  * {@code @description} 操作记录

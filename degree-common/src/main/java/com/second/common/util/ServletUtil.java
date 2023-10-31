@@ -7,7 +7,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * {@code @author} JSY
+ * {@code @author} chouchou
  * {@code @date} 2022/12/2
  * {@code @className} ServletUtil
  * {@code @description} ServletUtil

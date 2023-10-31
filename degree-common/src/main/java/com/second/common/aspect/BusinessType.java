@@ -1,7 +1,7 @@
 package com.second.common.aspect;
 
 /**
- * {@code @author} JSY
+ * {@code @author} chouchou
  * {@code @date} 2022/12/14
  * {@code @className} BusinessType
  * {@code @description} 切面日志枚举

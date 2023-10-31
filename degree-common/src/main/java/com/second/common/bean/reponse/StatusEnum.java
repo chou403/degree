@@ -4,7 +4,7 @@ import lombok.Getter;
 
 /**
  * response code
- * {@code @author}  JSY
+ * {@code @author}  chouchou
  * {@code @date}    2023/5/4 15:25
  */
 @Getter

@@ -20,7 +20,7 @@ import java.util.Date;
 import java.util.UUID;
 
 /**
- * {@code @author}  JSY
+ * {@code @author}  chouchou
  * {@code @date} 2023/7/14
  * {@code @description} login service impl
  */
@@ -36,7 +36,7 @@ public class LoginServiceImpl implements LoginService{
 
     /**
      * 账号登录
-     * {@code @author} JSY
+     * {@code @author} chouchou
      * {@code @date} 2023/7/15
      *
      * @param dto

@@ -3,7 +3,7 @@ package com.second.common.util;
 import java.util.StringJoiner;
 
 /**
- * {@code @author} JSY
+ * {@code @author} chouchou
  * {@code @date} 2023/3/29
  * {@code @className} SmallTool
  * {@code @description} 多线程小工具

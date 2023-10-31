@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
 import org.springframework.core.type.AnnotationMetadata;
 
 /**
- * {@code @author}  JSY
+ * {@code @author}  chouchou
  * {@code @date} 2023/8/23
  * {@code @description} importBeanDefinitionRegistrar
  */

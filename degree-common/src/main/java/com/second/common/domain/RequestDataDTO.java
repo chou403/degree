@@ -6,7 +6,7 @@ import lombok.ToString;
 import lombok.experimental.Accessors;
 
 /**
- * {@code @author} JSY
+ * {@code @author} chouchou
  * {@code @date} 2022/12/14
  * {@code @className} RequestData
  * {@code @description} 请求返回

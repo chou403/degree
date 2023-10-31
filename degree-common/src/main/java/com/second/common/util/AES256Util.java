@@ -5,7 +5,7 @@ import java.util.Map;
 
 /**
  * AES256 加密&解密
- * {@code @author}  JSY
+ * {@code @author}  chouchou
  * {@code @date}    2023/4/26 16:11
  */
 public class AES256Util {

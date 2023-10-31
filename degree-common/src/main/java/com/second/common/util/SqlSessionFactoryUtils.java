@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * {@code @author} JSY
+ * {@code @author} chouchou
  * {@code @date} 2023/2/16
  * {@code @className} SqlSessionFactoryUtils
  * {@code @description} sql session factory utils

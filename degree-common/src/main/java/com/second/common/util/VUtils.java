@@ -6,7 +6,7 @@ import com.second.common.handle.ThrowExceptionFunction;
 
 /**
  * 方法使用判断
- * {@code @author}  JSY
+ * {@code @author}  chouchou
  * {@code @date}    2023/4/23 17:45
  */
 public class VUtils {

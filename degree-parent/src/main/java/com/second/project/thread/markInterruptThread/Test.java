@@ -1,7 +1,7 @@
 package com.second.project.thread.markInterruptThread;
 
 /**
- * {@code @author}  JSY
+ * {@code @author}  chouchou
  * {@code @date} 2023/8/23
  * {@code @description} test
  */

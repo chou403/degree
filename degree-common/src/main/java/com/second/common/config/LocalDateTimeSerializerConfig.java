@@ -11,7 +11,7 @@ import java.time.format.DateTimeFormatter;
 
 /**
  * jackson localDateTime 序列化
- * {@code @author}  JSY
+ * {@code @author}  chouchou
  * {@code @date}    2023/4/7 18:00
  */
 //@Configuration
