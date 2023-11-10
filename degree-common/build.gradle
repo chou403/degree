@@ -12,6 +12,8 @@ dependencies {
     implementation 'org.apache.httpcomponents:httpclient'
     implementation 'jakarta.validation:jakarta.validation-api'
     implementation 'jakarta.servlet:jakarta.servlet-api'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
 
 }
 

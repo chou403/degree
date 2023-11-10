@@ -1,6 +1,7 @@
 package com.second.common.util;
 
 
+import com.alibaba.fastjson2.JSONObject;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -10,7 +11,6 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
-//import net.sf.json.JSONObject;
 
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
@@ -170,9 +170,8 @@ public class JsonHelper {
      * object to dto
      */
     public static <T> T jsonToDto(Class<T> clazz, Object object) {
-//        JSONObject jsonObject = JSONObject.fromObject(object);
-//        return (T) JSONObject.toBean(jsonObject, clazz);
-        return null;
+        String json = JSONObject.toJSONString(object);
+        return JSONObject.parseObject(json, clazz);
     }
 
     /**
