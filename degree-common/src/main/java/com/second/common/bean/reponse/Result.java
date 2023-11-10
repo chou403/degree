@@ -1,6 +1,6 @@
 package com.second.common.bean.reponse;
 
-import com.alibaba.fastjson2.JSON;
+import com.second.common.util.JsonHelper;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
@@ -40,8 +40,8 @@ public class Result<T> implements Serializable {
     /**
      * 构造函数
      *
-     * @param code    状态码
-     * @param msg 提示信息
+     * @param code 状态码
+     * @param msg  提示信息
      */
     public Result(Integer code, String msg) {
         this.success = false;
@@ -52,9 +52,9 @@ public class Result<T> implements Serializable {
     /**
      * 构造函数
      *
-     * @param success  状态
+     * @param success 状态
      * @param code    状态码
-     * @param msg 提示信息
+     * @param msg     提示信息
      */
     public Result(Boolean success, Integer code, String msg) {
         this.success = success;
@@ -65,9 +65,9 @@ public class Result<T> implements Serializable {
     /**
      * 构造函数
      *
-     * @param success  状态
+     * @param success 状态
      * @param code    状态码
-     * @param msg 提示信息
+     * @param msg     提示信息
      * @param data    结果
      */
     public Result(Boolean success, Integer code, String msg, T data) {
@@ -147,9 +147,9 @@ public class Result<T> implements Serializable {
     /**
      * 返回异常的
      *
-     * @param t       泛型枚举
+     * @param t   泛型枚举
      * @param msg 提示信息
-     * @param <T>     泛型
+     * @param <T> 泛型
      * @return 返回 result
      */
     public static <T extends Enum> Result error(T t, String msg) {
@@ -179,8 +179,8 @@ public class Result<T> implements Serializable {
     /**
      * 返回异常的
      *
-     * @param code    状态码
-     * @param msg 提示信息
+     * @param code 状态码
+     * @param msg  提示信息
      * @return 返回 result
      */
     public static Result error(Integer code, String msg) {
@@ -214,7 +214,7 @@ public class Result<T> implements Serializable {
      */
     @Override
     public String toString() {
-        return JSON.toJSONString(this);
+        return JsonHelper.parseToJson(this);
     }
 
     /**
@@ -223,7 +223,7 @@ public class Result<T> implements Serializable {
      * @return 返回JSON字符串
      */
     public String toJsonString() {
-        return JSON.toJSONString(this);
+        return JsonHelper.parseToJson(this);
     }
 
 }

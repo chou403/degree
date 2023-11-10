@@ -1,7 +1,6 @@
 package com.second.project.controller;
 
 import cn.hutool.extra.qrcode.QrCodeUtil;
-import com.alibaba.fastjson2.JSON;
 import com.second.common.bean.reponse.Result;
 import com.second.common.util.JsonHelper;
 import com.second.project.domains.dto.CommonLoginDTO;
@@ -40,7 +39,7 @@ public class LoginController {
     @GetMapping("/selectList")
     public String selectList() {
         List<UserToken> list = loginMapper.selectList(null);
-        return JSON.toJSONString(list);
+        return JsonHelper.parseToJson(list);
     }
 
     @PostMapping("/commonLogin")
@@ -50,9 +49,8 @@ public class LoginController {
         try {
             result.setData(loginService.loginCommon(dto));
         } catch (Exception e) {
-            e.printStackTrace();
             result.setCode(500);
-            result.setMessage(e.getMessage());
+            result.setMsg(e.getMessage());
         }
 
         return result;
@@ -97,9 +95,8 @@ public class LoginController {
         try {
             result.setData(loginService.bindUserIdAndToken(userId, token, projId));
         } catch (Exception e) {
-            e.printStackTrace();
             result.setCode(500);
-            result.setMessage(e.getMessage());
+            result.setMsg(e.getMessage());
         }
 
         return result;

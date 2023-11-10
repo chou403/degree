@@ -1,6 +1,5 @@
 package com.second.common.util;
 
-import com.alibaba.fastjson.JSONObject;
 import com.second.common.domain.TempDataDTO;
 
 import java.math.BigDecimal;
@@ -35,7 +34,8 @@ public class StreamUtils {
      */
     public static <T> Predicate<T> distinctByKey(Function<? super T, ?> keyExtractor) {
         ConcurrentSkipListMap<Object, Boolean> skipListMap = new ConcurrentSkipListMap<>();
-        return t -> skipListMap.putIfAbsent(JSONObject.toJSONString(keyExtractor.apply(t)), Boolean.TRUE) == null;
+
+        return t -> skipListMap.putIfAbsent(JsonHelper.parseToJson(keyExtractor.apply(t)), Boolean.TRUE) == null;
     }
 
     /**

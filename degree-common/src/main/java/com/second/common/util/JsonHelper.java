@@ -1,7 +1,6 @@
 package com.second.common.util;
 
 
-import com.alibaba.fastjson2.JSONObject;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -170,8 +169,7 @@ public class JsonHelper {
      * object to dto
      */
     public static <T> T jsonToDto(Class<T> clazz, Object object) {
-        String json = JSONObject.toJSONString(object);
-        return JSONObject.parseObject(json, clazz);
+        return parseToObject(parseToJson(object), clazz);
     }
 
     /**

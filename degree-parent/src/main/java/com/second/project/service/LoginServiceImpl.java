@@ -1,9 +1,8 @@
 package com.second.project.service;
 
-import com.alibaba.fastjson2.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.second.common.util.CommonUtil;
 import com.second.common.util.DateUtils;
+import com.second.common.util.JsonHelper;
 import com.second.common.util.StringUtils;
 import com.second.project.config.WebSocketServer;
 import com.second.project.domains.dto.CommonLoginDTO;
@@ -11,13 +10,11 @@ import com.second.project.entity.User;
 import com.second.project.entity.UserToken;
 import com.second.project.mapper.UserMapper;
 import com.second.project.mapper.UserTokenMapper;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import jakarta.annotation.Resource;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * {@code @author}  chouchou
@@ -26,7 +23,7 @@ import java.util.UUID;
  */
 @Slf4j
 @Service
-public class LoginServiceImpl implements LoginService{
+public class LoginServiceImpl implements LoginService {
 
     @Resource
     private UserTokenMapper userTokenMapper;
@@ -42,11 +39,11 @@ public class LoginServiceImpl implements LoginService{
      * @param dto
      */
     @Override
-    public String loginCommon(CommonLoginDTO dto) throws Exception{
+    public String loginCommon(CommonLoginDTO dto) throws Exception {
         QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
         userQueryWrapper
                 .eq("user_code", dto.getUserCode())
-                .eq("password",dto.getPassword());
+                .eq("password", dto.getPassword());
 
         User user = userMapper.selectOne(userQueryWrapper);
 
@@ -58,7 +55,7 @@ public class LoginServiceImpl implements LoginService{
     }
 
     @Override
-    public String bindUserIdAndToken(Integer userId, String token,Integer projId) throws Exception {
+    public String bindUserIdAndToken(Integer userId, String token, Integer projId) throws Exception {
 
         QueryWrapper<UserToken> userTokenQueryWrapper = new QueryWrapper();
         userTokenQueryWrapper.eq("uuid", token);
@@ -68,20 +65,20 @@ public class LoginServiceImpl implements LoginService{
         userToken.setUuid(token);
         userToken = userTokenMapper.selectOne(userTokenQueryWrapper);
 
-        if(null == userToken){
+        if (null == userToken) {
             throw new Exception("错误的请求！");
         }
         Date createDate = DateUtils.getDateAfterTime(userToken.getCreateTime(), 1, Calendar.MINUTE);
         log.info("获取一分钟后的时间：{}", createDate);
         Date nowDate = new Date();
-        if(nowDate.getTime() > createDate.getTime()){//当前时间大于校验时间
+        if (nowDate.getTime() > createDate.getTime()) {//当前时间大于校验时间
 
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("code",500);
-            jsonObject.put("msg","二维码失效！");
-            WebSocketServer.sendInfo(jsonObject.toJSONString(),token);
+            Map<String, Object> resultMap = new HashMap<>();
+            resultMap.put("code", 500);
+            resultMap.put("msg", "二维码失效！");
+            WebSocketServer.sendInfo(JsonHelper.parseToJson(resultMap), token);
 
-            throw  new Exception("二维码失效！");
+            throw new Exception("二维码失效！");
         }
 
         userToken.setLoginTime(new Date());
@@ -89,19 +86,19 @@ public class LoginServiceImpl implements LoginService{
 
         int i = userTokenMapper.update(userToken, userTokenQueryWrapper);
 
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("code",200);
-        jsonObject.put("msg","ok");
-        jsonObject.put("userId",userId);
-        if(StringUtils.isNotNullOrEmpty(projId)){
-            jsonObject.put("projId",projId);
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("code", 200);
+        resultMap.put("msg", "ok");
+        resultMap.put("userId", userId);
+        if (StringUtils.isNotNullOrEmpty(projId)) {
+            resultMap.put("projId", projId);
         }
-        WebSocketServer.sendInfo(jsonObject.toJSONString(),token);
+        WebSocketServer.sendInfo(JsonHelper.parseToJson(resultMap), token);
 
-        if(i > 0 ){
+        if (i > 0) {
             return null;
-        }else{
-            throw  new Exception("服务器异常！");
+        } else {
+            throw new Exception("服务器异常！");
         }
     }
 
