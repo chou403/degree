@@ -1,4 +1,4 @@
-package com.second.common.advice;
+package com.second.common.aop.advice;
 
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;

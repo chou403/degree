@@ -1,7 +1,7 @@
-package com.second.common.filter;
+package com.second.common.aop.filter;
 
 import com.second.common.bean.reponse.Result;
-import com.second.common.bean.reponse.StatusEnum;
+import com.second.common.bean.StatusEnum;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 

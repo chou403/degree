@@ -1,4 +1,4 @@
-package com.second.common.handle;
+package com.second.common.bean.handle;
 
 /**
  * 抛异常接口

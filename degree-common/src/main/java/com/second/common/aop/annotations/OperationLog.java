@@ -1,4 +1,6 @@
-package com.second.common.aspect;
+package com.second.common.aop.annotations;
+
+import com.second.common.bean.BusinessType;
 
 import java.lang.annotation.*;
 

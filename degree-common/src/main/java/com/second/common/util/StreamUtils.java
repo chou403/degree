@@ -1,6 +1,6 @@
 package com.second.common.util;
 
-import com.second.common.domain.TempDataDTO;
+import com.second.common.bean.domain.TempDataDTO;
 
 import java.math.BigDecimal;
 import java.util.Collections;

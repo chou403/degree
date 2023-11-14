@@ -1,8 +1,8 @@
 package com.second.common.util;
 
-import com.second.common.handle.BranchHandle;
-import com.second.common.handle.PresentOrElseHandler;
-import com.second.common.handle.ThrowExceptionFunction;
+import com.second.common.bean.handle.BranchHandle;
+import com.second.common.bean.handle.PresentOrElseHandler;
+import com.second.common.bean.handle.ThrowExceptionFunction;
 
 /**
  * 方法使用判断

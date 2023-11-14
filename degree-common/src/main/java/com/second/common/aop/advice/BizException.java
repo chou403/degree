@@ -1,4 +1,4 @@
-package com.second.common.advice;
+package com.second.common.aop.advice;
 
 import lombok.Getter;
 

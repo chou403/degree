@@ -1,6 +1,6 @@
 package com.second.common.service;
 
-import com.second.common.domain.OperationLogDTO;
+import com.second.common.bean.domain.OperationLogDTO;
 
 /**
  * {@code @author} chouchou

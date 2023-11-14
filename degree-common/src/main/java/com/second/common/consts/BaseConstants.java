@@ -1,4 +1,4 @@
-package com.second.project.constans;
+package com.second.common.consts;
 
 /**
  * {@code @author}  chouchou

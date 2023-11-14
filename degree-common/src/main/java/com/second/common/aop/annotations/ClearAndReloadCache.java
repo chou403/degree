@@ -1,4 +1,4 @@
-package com.second.common.aspect;
+package com.second.common.aop.annotations;
 
 import java.lang.annotation.*;
 

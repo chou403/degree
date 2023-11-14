@@ -1,4 +1,4 @@
-package com.second.common.domain;
+package com.second.common.bean.domain;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

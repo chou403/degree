@@ -1,4 +1,4 @@
-package com.second.common.aspect;
+package com.second.common.bean;
 
 /**
  * {@code @author} chouchou

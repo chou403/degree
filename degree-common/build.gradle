@@ -6,7 +6,6 @@ dependencies {
     implementation 'org.aspectj:aspectjtools'
     implementation 'com.google.guava:guava'
     implementation 'com.auth0:java-jwt'
-//    implementation 'com.alibaba:fastjson'
     implementation 'org.mybatis:mybatis'
     implementation 'cn.hutool:hutool-all'
     implementation 'org.apache.httpcomponents:httpclient'
@@ -15,7 +14,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     implementation 'org.springframework.boot:spring-boot-starter-aop'
     implementation 'com.fasterxml.jackson.core:jackson-databind'
-
 }
 
 jar {

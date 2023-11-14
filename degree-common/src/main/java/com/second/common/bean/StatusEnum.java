@@ -1,4 +1,4 @@
-package com.second.common.bean.reponse;
+package com.second.common.bean;
 
 import lombok.Getter;
 

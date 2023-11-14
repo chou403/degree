@@ -1,8 +1,9 @@
-package com.second.common.aspect;
+package com.second.common.aop.interceptor;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.second.common.domain.OperationLogDTO;
-import com.second.common.domain.RequestDataDTO;
+import com.second.common.aop.annotations.OperationLog;
+import com.second.common.bean.domain.OperationLogDTO;
+import com.second.common.bean.domain.RequestDataDTO;
 import com.second.common.service.OperationLogService;
 import com.second.common.util.JsonHelper;
 import lombok.extern.slf4j.Slf4j;
@@ -40,7 +41,7 @@ public class OperationLogAspect {
         this.operationLogService = operationLogService;
     }
 
-    @Pointcut("@annotation(com.second.common.aspect.OperationLog)")
+    @Pointcut("@annotation(com.second.common.aop.annotations.OperationLog)")
     public void buttonLogAspect() {
     }
 

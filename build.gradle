@@ -49,8 +49,8 @@ subprojects {
         implementation 'org.projectlombok:lombok'
         testImplementation rootProject.ext.dependencies.junitJupiterApi
         testRuntimeOnly rootProject.ext.dependencies.junitJupiterEngine
-        implementation rootProject.ext.dependencies.tomcatEmbedCore
-        implementation rootProject.ext.dependencies.tomcatEmbedEl
+//        implementation rootProject.ext.dependencies.tomcatEmbedCore
+//        implementation rootProject.ext.dependencies.tomcatEmbedEl
         implementation rootProject.ext.dependencies.snakeyaml
         implementation rootProject.ext.dependencies.jacksonDatabind
     }

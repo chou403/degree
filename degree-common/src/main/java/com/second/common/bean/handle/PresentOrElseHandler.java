@@ -1,4 +1,4 @@
-package com.second.common.handle;
+package com.second.common.bean.handle;
 
 import java.util.function.Consumer;
 

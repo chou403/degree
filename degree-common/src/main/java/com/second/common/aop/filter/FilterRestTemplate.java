@@ -1,4 +1,4 @@
-package com.second.common.filter;
+package com.second.common.aop.filter;
 
 import lombok.AllArgsConstructor;
 import lombok.experimental.Delegate;

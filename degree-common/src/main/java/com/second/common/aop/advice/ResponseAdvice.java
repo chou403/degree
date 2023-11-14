@@ -1,4 +1,4 @@
-package com.second.common.advice;
+package com.second.common.aop.advice;
 
 import com.second.common.bean.reponse.Result;
 import org.springframework.core.MethodParameter;

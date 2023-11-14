@@ -1,6 +1,6 @@
 package com.second.common.service.impl;
 
-import com.second.common.domain.OperationLogDTO;
+import com.second.common.bean.domain.OperationLogDTO;
 import com.second.common.service.OperationLogService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;

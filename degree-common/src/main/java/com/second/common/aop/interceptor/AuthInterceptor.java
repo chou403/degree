@@ -1,4 +1,4 @@
-package com.second.common.interceptor;
+package com.second.common.aop.interceptor;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

@@ -1,5 +1,6 @@
-package com.second.common.aspect;
+package com.second.common.aop.interceptor;
 
+import com.second.common.aop.annotations.ClearAndReloadCache;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
@@ -31,7 +32,7 @@ public class ClearAndReloadCacheAspect {
      * 切入点
      * 切入点,基于注解实现的切入点  加上该注解的都是Aop切面的切入点
      */
-    @Pointcut("@annotation(com.second.common.aspect.ClearAndReloadCache)")
+    @Pointcut("@annotation(com.second.common.aop.annotations.ClearAndReloadCache)")
     public void pointCut() {
 
     }
