@@ -19,7 +19,7 @@ public class ExtractRestTemplate extends FilterRestTemplate{
     }
 
     public <T> Result<T> postForEntityWithNoException(String url, Object request, Class<T> responseType, Object... uriVariables) {
-        Result<T> restResponseDTO = new Result<T>();
+        Result<T> restResponseDTO = Result.success();
         ResponseEntity<T> tResponseEntity;
         try {
             tResponseEntity = restTemplate.postForEntity(url, request, responseType, uriVariables);

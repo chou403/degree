@@ -10,6 +10,8 @@ import org.springframework.retry.annotation.Recover;
 import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
 
+import javax.sound.midi.Soundbank;
+
 /**
  * {@code @author}  chouchou
  * {@code @date} 2023/11/14
@@ -36,5 +38,10 @@ public class TestSpringRetryServiceImpl implements TestSpringRetryService {
     public Result<Integer> recover(Exception e) {
         log.info("重试发送失败");
         return Result.error("重试发送失败");
+    }
+
+    public static void main(String[] args) {
+        Result<Object> objectResult = Result.success();
+        System.out.println(objectResult.toString());
     }
 }

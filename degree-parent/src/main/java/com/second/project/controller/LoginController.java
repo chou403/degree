@@ -44,7 +44,7 @@ public class LoginController {
 
     @PostMapping("/commonLogin")
     public Object loginCommon(@RequestBody  CommonLoginDTO dto) {
-        Result result = new Result();
+        Result result = Result.success();
 
         try {
             result.setData(loginService.loginCommon(dto));
@@ -91,7 +91,7 @@ public class LoginController {
     public Object bindUserIdAndToken(@RequestParam("token") String token,
                                      @RequestParam("userId") Integer userId,
                                      @RequestParam(required = false, value = "projId") Integer projId) {
-        Result result = new Result();
+        Result result = Result.success();
         try {
             result.setData(loginService.bindUserIdAndToken(userId, token, projId));
         } catch (Exception e) {
@@ -105,6 +105,6 @@ public class LoginController {
     @PostMapping("/test-valid")
     public Result testValid(@Valid @RequestBody TestValidDTO dto) {
         log.info("参数：{}", JsonHelper.parseToJson(dto));
-        return new Result<>();
+        return Result.success();
     }
 }
