@@ -120,7 +120,7 @@ public class Result<T> implements Serializable {
      *
      * @return 返回结果
      */
-    public static Result success() {
+    public static <T> Result<T> success() {
         return new Result<>(true, SUCCESS_CODE, SUCCESS_MSG);
     }
 
@@ -129,7 +129,7 @@ public class Result<T> implements Serializable {
      *
      * @return 返回结果
      */
-    public static <T> Result success(T result) {
+    public static <T> Result<T> success(T result) {
         return new Result<>(true, SUCCESS_CODE, SUCCESS_MSG, result);
     }
 
@@ -140,7 +140,7 @@ public class Result<T> implements Serializable {
      * @param <T> 泛型
      * @return 返回 result
      */
-    public static <T extends Enum> Result error(T t) {
+    public static <T> Result<T> error(T t) {
         return error(t, CODE, MESSAGE, null);
     }
 
@@ -152,7 +152,7 @@ public class Result<T> implements Serializable {
      * @param <T> 泛型
      * @return 返回 result
      */
-    public static <T extends Enum> Result error(T t, String msg) {
+    public static <T> Result<T> error(T t, String msg) {
         return error(t, CODE, MESSAGE, msg);
     }
 
@@ -160,9 +160,10 @@ public class Result<T> implements Serializable {
      * 返回异常的
      *
      * @param code 状态码
+     * @param <T> 泛型
      * @return 返回 result
      */
-    public static Result error(Integer code) {
+    public static <T> Result<T> error(Integer code) {
         return new Result<>(code, null);
     }
 
@@ -170,9 +171,10 @@ public class Result<T> implements Serializable {
      * 返回异常的
      *
      * @param msg 提示信息
+     * @param <T> 泛型
      * @return 返回 result
      */
-    public static Result error(String msg) {
+    public static <T> Result<T> error(String msg) {
         return new Result<>(ERROR_CODE, msg);
     }
 
@@ -181,9 +183,10 @@ public class Result<T> implements Serializable {
      *
      * @param code 状态码
      * @param msg  提示信息
+     * @param <T> 泛型
      * @return 返回 result
      */
-    public static Result error(Integer code, String msg) {
+    public static <T> Result<T> error(Integer code, String msg) {
         return new Result<>(code, msg);
     }
 
@@ -196,7 +199,7 @@ public class Result<T> implements Serializable {
      * @param <T>        泛型
      * @return 返回 result 对象
      */
-    public static <T extends Enum> Result error(T t, String codeMethod, String msgMethod, String msg) {
+    public static <T> Result<T> error(T t, String codeMethod, String msgMethod, String msg) {
         try {
             Class<?> aClass = t.getClass();
             Integer code = (Integer) aClass.getMethod(codeMethod).invoke(t);

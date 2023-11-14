@@ -1,5 +1,7 @@
 package com.second.project.service;
 
+import com.second.common.bean.reponse.Result;
+
 /**
  * {@code @author}  chouchou
  * {@code @date} 2023/11/14
@@ -7,6 +9,6 @@ package com.second.project.service;
  */
 public interface TestSpringRetryService {
 
-    int getRetryNum(int num);
+    Result<Integer> getRetryNum(int num);
 
 }

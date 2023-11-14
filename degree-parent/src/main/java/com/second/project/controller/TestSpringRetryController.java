@@ -1,5 +1,6 @@
 package com.second.project.controller;
 
+import com.second.common.bean.reponse.Result;
 import com.second.project.service.TestSpringRetryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +25,7 @@ public class TestSpringRetryController {
     }
 
     @GetMapping("/getRetryNum")
-    public int getRetryNum(@RequestParam int num) {
+    public Result<Integer> getRetryNum(@RequestParam int num) {
         return testSpringRetryService.getRetryNum(num);
     }
 }
