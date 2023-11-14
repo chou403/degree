@@ -40,8 +40,4 @@ public class TestSpringRetryServiceImpl implements TestSpringRetryService {
         return Result.error("重试发送失败");
     }
 
-    public static void main(String[] args) {
-        Result<Object> objectResult = Result.success();
-        System.out.println(objectResult.toString());
-    }
 }
