@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -15,7 +16,9 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 public class Result<T> implements Serializable {
-//    private static final long serialVersionUID = -367310071802308298L;
+
+    @Serial
+    private static final long serialVersionUID = -2937589581985593565L;
 
     /**
      * 状态值
