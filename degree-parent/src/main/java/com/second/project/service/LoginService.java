@@ -1,6 +1,6 @@
 package com.second.project.service;
 
-import com.second.project.domains.dto.CommonLoginDTO;
+import com.second.project.domains.CommonLoginDTO;
 
 /**
  * {@code @author}  chouchou
@@ -21,7 +21,7 @@ public interface LoginService {
      * {@code @author} chouchou
      * {@code @date} 2023/7/15
      */
-    String bindUserIdAndToken(Integer userId, String token,Integer projId) throws Exception;
+    String bindUserIdAndToken(Integer userId, String token, Integer projId) throws Exception;
 
     /**
      * 新建 user token 信息

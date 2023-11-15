@@ -1,11 +1,11 @@
 package com.second.project.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.second.common.util.DateUtils;
-import com.second.common.util.JsonHelper;
-import com.second.common.util.StringUtils;
+import com.second.common.utils.DateUtil;
+import com.second.common.utils.JsonHelper;
+import com.second.common.utils.StringUtil;
 import com.second.project.config.WebSocketServer;
-import com.second.project.domains.dto.CommonLoginDTO;
+import com.second.project.domains.CommonLoginDTO;
 import com.second.project.entity.User;
 import com.second.project.entity.UserToken;
 import com.second.project.mapper.UserMapper;
@@ -47,7 +47,7 @@ public class LoginServiceImpl implements LoginService {
 
         User user = userMapper.selectOne(userQueryWrapper);
 
-        if (StringUtils.isNullOrEmpty(user)) {
+        if (StringUtil.isNullOrEmpty(user)) {
             throw new Exception("账号不存在，请重新输入");
         }
 
@@ -68,7 +68,7 @@ public class LoginServiceImpl implements LoginService {
         if (null == userToken) {
             throw new Exception("错误的请求！");
         }
-        Date createDate = DateUtils.getDateAfterTime(userToken.getCreateTime(), 1, Calendar.MINUTE);
+        Date createDate = DateUtil.getDateAfterTime(userToken.getCreateTime(), 1, Calendar.MINUTE);
         log.info("获取一分钟后的时间：{}", createDate);
         Date nowDate = new Date();
         if (nowDate.getTime() > createDate.getTime()) {//当前时间大于校验时间
@@ -90,7 +90,7 @@ public class LoginServiceImpl implements LoginService {
         resultMap.put("code", 200);
         resultMap.put("msg", "ok");
         resultMap.put("userId", userId);
-        if (StringUtils.isNotNullOrEmpty(projId)) {
+        if (StringUtil.isNotNullOrEmpty(projId)) {
             resultMap.put("projId", projId);
         }
         WebSocketServer.sendInfo(JsonHelper.parseToJson(resultMap), token);

@@ -5,7 +5,7 @@ import com.second.common.aop.annotations.OperationLog;
 import com.second.common.bean.domain.OperationLogDTO;
 import com.second.common.bean.domain.RequestDataDTO;
 import com.second.common.service.OperationLogService;
-import com.second.common.util.JsonHelper;
+import com.second.common.utils.JsonHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.JoinPoint;

@@ -2,19 +2,19 @@ package com.second.project.controller;
 
 import cn.hutool.extra.qrcode.QrCodeUtil;
 import com.second.common.bean.reponse.Result;
-import com.second.common.util.JsonHelper;
-import com.second.project.domains.dto.CommonLoginDTO;
-import com.second.project.domains.dto.TestValidDTO;
+import com.second.common.utils.JsonHelper;
+import com.second.project.domains.CommonLoginDTO;
+import com.second.project.domains.TestValidDTO;
 import com.second.project.entity.UserToken;
 import com.second.project.mapper.UserTokenMapper;
 import com.second.project.service.LoginService;
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
-import jakarta.annotation.Resource;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -43,7 +43,7 @@ public class LoginController {
     }
 
     @PostMapping("/commonLogin")
-    public Object loginCommon(@RequestBody  CommonLoginDTO dto) {
+    public Object loginCommon(@RequestBody CommonLoginDTO dto) {
         Result result = Result.success();
 
         try {

@@ -1,6 +1,6 @@
 package com.second.project.other.completableFuture;
 
-import com.second.common.util.SmallTool;
+import com.second.common.utils.ThreadTool;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -13,18 +13,18 @@ import java.util.concurrent.CompletableFuture;
  */
 public class ApplyToEither_06 {
     public static void main(String[] args) {
-        SmallTool.print("张三走出餐厅，来到公交站");
-        SmallTool.print("等待 700路 或者 800路 公交到来");
+        ThreadTool.print("张三走出餐厅，来到公交站");
+        ThreadTool.print("等待 700路 或者 800路 公交到来");
         CompletableFuture<String> bus = CompletableFuture.supplyAsync(() -> {
-            SmallTool.print("700路公交正在赶来");
-            SmallTool.sleep(300);
+            ThreadTool.print("700路公交正在赶来");
+            ThreadTool.sleep(300);
             return "700路到了";
         }).applyToEither(CompletableFuture.supplyAsync(() -> {
-            SmallTool.print("800路公交正在赶来");
-            SmallTool.sleep(200);
+            ThreadTool.print("800路公交正在赶来");
+            ThreadTool.sleep(200);
             return "800路到了";
         }), firstComeBus -> firstComeBus);
 
-        SmallTool.print(String.format("%s,小白坐车回家", bus.join()));
+        ThreadTool.print(String.format("%s,小白坐车回家", bus.join()));
     }
 }

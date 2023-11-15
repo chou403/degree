@@ -1,6 +1,6 @@
 package com.second.project.other.completableFuture;
 
-import com.second.common.util.SmallTool;
+import com.second.common.utils.ThreadTool;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -14,23 +14,23 @@ import java.util.concurrent.CompletableFuture;
  */
 public class ThenCombine_03 {
     public static void main(String[] args) {
-        SmallTool.print("小白进入餐厅");
-        SmallTool.print("小白点了菜 + 米饭");
+        ThreadTool.print("小白进入餐厅");
+        ThreadTool.print("小白点了菜 + 米饭");
         CompletableFuture<String> cf = CompletableFuture.supplyAsync(() -> {
-            SmallTool.print("厨师炒菜");
-            SmallTool.sleep(200);
+            ThreadTool.print("厨师炒菜");
+            ThreadTool.sleep(200);
             return "菜";
         }).thenCombine(CompletableFuture.supplyAsync(() -> {
-            SmallTool.print("服务员蒸饭");
-            SmallTool.sleep(300);
+            ThreadTool.print("服务员蒸饭");
+            ThreadTool.sleep(300);
             return "米饭";
         }), (dish, rice) -> {
-            SmallTool.print("服务员打饭");
-            SmallTool.sleep(100);
+            ThreadTool.print("服务员打饭");
+            ThreadTool.sleep(100);
             return String.format("%s + %s 好了", dish, rice);
         });
 
-        SmallTool.print("小白在打游戏");
-        SmallTool.print(String.format("%s,小白开吃", cf.join()));
+        ThreadTool.print("小白在打游戏");
+        ThreadTool.print(String.format("%s,小白开吃", cf.join()));
     }
 }

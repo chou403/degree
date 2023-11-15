@@ -1,6 +1,6 @@
 package com.second.common.aop.annotations;
 
-import com.second.common.bean.BusinessType;
+import com.second.common.bean.BusinessTypeEnum;
 
 import java.lang.annotation.*;
 
@@ -28,5 +28,5 @@ public @interface OperationLog {
     /**
      * 操作类型
      */
-    BusinessType businessType() default BusinessType.UPDATE;
+    BusinessTypeEnum businessType() default BusinessTypeEnum.UPDATE;
 }

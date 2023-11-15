@@ -1,6 +1,6 @@
 package com.second.common.bean.reponse;
 
-import com.second.common.util.JsonHelper;
+import com.second.common.utils.JsonHelper;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
@@ -119,25 +119,39 @@ public class Result<T> implements Serializable {
     }
 
     /**
-     * 操作成功
+     * 返回成功
      *
-     * @return 返回结果
+     * @return 返回 result
      */
     public static <T> Result<T> success() {
         return new Result<>(true, SUCCESS_CODE, SUCCESS_MSG);
     }
 
     /**
-     * 操作成功
+     * 返回成功
      *
-     * @return 返回结果
+     * @param t   泛型枚举
+     * @param <T> 泛型
+     * @return 返回 result
      */
-    public static <T> Result<T> success(T result) {
-        return new Result<>(true, SUCCESS_CODE, SUCCESS_MSG, result);
+    public static <T> Result<T> success(T t) {
+        return new Result<>(true, SUCCESS_CODE, SUCCESS_MSG, t);
     }
 
     /**
-     * 返回异常的
+     * 返回成功
+     *
+     * @param t   泛型枚举
+     * @param msg 提示信息
+     * @param <T> 泛型
+     * @return 返回 result
+     */
+    public static <T> Result<T> success(T t, String msg) {
+        return new Result<>(true, SUCCESS_CODE, msg, t);
+    }
+
+    /**
+     * 返回异常
      *
      * @param t   泛型枚举
      * @param <T> 泛型
@@ -148,7 +162,7 @@ public class Result<T> implements Serializable {
     }
 
     /**
-     * 返回异常的
+     * 返回异常
      *
      * @param t   泛型枚举
      * @param msg 提示信息
@@ -160,7 +174,7 @@ public class Result<T> implements Serializable {
     }
 
     /**
-     * 返回异常的
+     * 返回异常
      *
      * @param code 状态码
      * @param <T> 泛型
@@ -171,7 +185,7 @@ public class Result<T> implements Serializable {
     }
 
     /**
-     * 返回异常的
+     * 返回异常
      *
      * @param msg 提示信息
      * @param <T> 泛型
@@ -182,7 +196,7 @@ public class Result<T> implements Serializable {
     }
 
     /**
-     * 返回异常的
+     * 返回异常
      *
      * @param code 状态码
      * @param msg  提示信息
@@ -194,7 +208,7 @@ public class Result<T> implements Serializable {
     }
 
     /**
-     * 返回异常的
+     * 返回异常 基于 StatusEnum
      *
      * @param t          返回的枚举
      * @param codeMethod 状态的方法

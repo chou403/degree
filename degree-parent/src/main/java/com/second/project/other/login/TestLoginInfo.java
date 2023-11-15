@@ -1,6 +1,6 @@
 package com.second.project.other.login;
 
-import com.second.common.bean.ApplicationContextHelper;
+import com.second.common.utils.bean.ApplicationContextHelper;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

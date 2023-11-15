@@ -1,6 +1,6 @@
 package com.second.project.other.completableFuture;
 
-import com.second.common.util.SmallTool;
+import com.second.common.utils.ThreadTool;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -13,18 +13,18 @@ import java.util.concurrent.CompletableFuture;
  */
 public class SupplyAsync_01 {
     public static void main(String[] args) {
-        SmallTool.print("小白进入餐厅");
-        SmallTool.print("小白点了菜");
+        ThreadTool.print("小白进入餐厅");
+        ThreadTool.print("小白点了菜");
         CompletableFuture<String> cf = CompletableFuture.supplyAsync(() -> {
-            SmallTool.print("厨师炒菜");
-            SmallTool.sleep(200);
-            SmallTool.print("厨师打饭");
-            SmallTool.sleep(100);
+            ThreadTool.print("厨师炒菜");
+            ThreadTool.sleep(200);
+            ThreadTool.print("厨师打饭");
+            ThreadTool.sleep(100);
             return "菜 做好了";
         });
 
-        SmallTool.print("小白在打游戏");
+        ThreadTool.print("小白在打游戏");
         // join() 会等待任务执行结束，然后返回任务的结果
-        SmallTool.print(String.format("%s,小白开吃", cf.join()));
+        ThreadTool.print(String.format("%s,小白开吃", cf.join()));
     }
 }
