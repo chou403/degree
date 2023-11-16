@@ -14,6 +14,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     implementation 'org.springframework.boot:spring-boot-starter-aop'
     implementation 'com.fasterxml.jackson.core:jackson-databind'
+    implementation 'org.redisson:redisson-spring-data-31'
 }
 
 jar {

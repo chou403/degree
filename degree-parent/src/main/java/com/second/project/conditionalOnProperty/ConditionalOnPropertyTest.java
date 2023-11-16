@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @EnableScheduling
-@ConditionalOnProperty(prefix = "cod", name = "test", havingValue = "111", matchIfMissing = false)
+@ConditionalOnProperty(prefix = "cond", name = "pro", havingValue = "111", matchIfMissing = false)
 public class ConditionalOnPropertyTest {
 
     //    @Scheduled(cron = "*/5 * * * * ?")

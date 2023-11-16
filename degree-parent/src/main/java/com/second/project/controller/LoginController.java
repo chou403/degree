@@ -4,14 +4,12 @@ import cn.hutool.extra.qrcode.QrCodeUtil;
 import com.second.common.bean.reponse.Result;
 import com.second.common.utils.JsonHelper;
 import com.second.project.domains.CommonLoginDTO;
-import com.second.project.domains.TestValidDTO;
 import com.second.project.entity.UserToken;
 import com.second.project.mapper.UserTokenMapper;
 import com.second.project.service.LoginService;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
@@ -102,9 +100,4 @@ public class LoginController {
         return result;
     }
 
-    @PostMapping("/test-valid")
-    public Result testValid(@Valid @RequestBody TestValidDTO dto) {
-        log.info("参数：{}", JsonHelper.parseToJson(dto));
-        return Result.success();
-    }
 }
