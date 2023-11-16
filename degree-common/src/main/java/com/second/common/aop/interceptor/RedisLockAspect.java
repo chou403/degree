@@ -40,7 +40,7 @@ public class RedisLockAspect {
         final String lockKey = generateKey(pjp);
 
         // 上锁
-        final boolean success = redisLock.Rlock(lockKey, null, lock.delaySeconds(), TimeUnit.SECONDS);
+        final boolean success = redisLock.lock(lockKey, null, lock.delaySeconds(), TimeUnit.SECONDS);
         if (!success) {
             return Result.error("操作太频繁，稍后重试");
         }

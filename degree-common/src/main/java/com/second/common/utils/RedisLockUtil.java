@@ -24,7 +24,7 @@ public class RedisLockUtil {
     private Redisson redisson;
 
     /**
-     * Redission获取锁
+     * Redisson获取锁
      *
      * @param lockKey      锁名
      * @param uuid         唯一标识
@@ -32,32 +32,32 @@ public class RedisLockUtil {
      * @param unit         单位
      * @return 是否获取成功
      */
-    public boolean Rlock(String lockKey, final String uuid, long delaySeconds, final TimeUnit unit) {
+    public boolean lock(String lockKey, final String uuid, long delaySeconds, final TimeUnit unit) {
         RLock rLock = redisson.getLock(lockKey);
         boolean success = false;
         try {
             // log.debug("===lock thread id is :{}", Thread.currentThread().getId());
             success = rLock.tryLock(0, delaySeconds, unit);
         } catch (InterruptedException e) {
-            log.error("[RedisLock][Rlock]>>>> 加锁异常: ", e);
+            log.error("[RedisLock][lock]>>>> 加锁异常: ", e);
         }
         return success;
     }
 
     /**
-     * Redission释放锁
+     * Redisson释放锁
      *
      * @param lockKey 锁名
      */
-    public void Runlock(String lockKey) {
+    public void Unlock(String lockKey) {
         RLock rLock = redisson.getLock(lockKey);
-        log.debug("[RedisLock][Rlock]>>>> {}, status: {} === unlock thread id is: {}", rLock.isHeldByCurrentThread(), rLock.isLocked(),
-                Thread.currentThread().getId());
+        log.debug("[RedisLock][lock]>>>> {}, status: {} === unlock thread id is: {}", rLock.isHeldByCurrentThread(), rLock.isLocked(),
+                Thread.currentThread().threadId());
         rLock.unlock();
     }
 
     /**
-     * Redission延迟释放锁
+     * Redisson延迟释放锁
      *
      * @param lockKey   锁名
      * @param delayTime 延迟时间
@@ -68,9 +68,9 @@ public class RedisLockUtil {
             return;
         }
         if (delayTime <= 0) {
-            Runlock(lockKey);
+            Unlock(lockKey);
         } else {
-//            EXECUTOR_SERVICE.schedule(() -> Runlock(lockKey), delayTime, unit);
+//            EXECUTOR_SERVICE.schedule(() -> Unlock(lockKey), delayTime, unit);
         }
     }
 
