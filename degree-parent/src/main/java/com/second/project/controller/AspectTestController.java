@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 public class AspectTestController {
 
     @PostMapping("/test-valid")
-    public Result testValid(@Valid @RequestBody TestValidDTO dto) {
+    public Result testValid(@Valid @RequestBody(required = false) TestValidDTO dto) {
         log.info("参数：{}", JsonHelper.parseToJson(dto));
         return Result.success();
     }
