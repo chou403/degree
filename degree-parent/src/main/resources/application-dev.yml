@@ -6,8 +6,6 @@ mybatis-plus:
         log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 server:
     port: 8085
-    servlet:
-        context-path: /degree
 spring:
     #    aop:
 #        proxy-target-class: false

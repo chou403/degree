@@ -10,6 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/degree-common" />
+            <option value="$PROJECT_DIR$/degree-gateway" />
             <option value="$PROJECT_DIR$/degree-parent" />
           </set>
         </option>

@@ -1,0 +1,23 @@
+server:
+    port: 9091
+
+spring:
+    application:
+        name: gateway
+    cloud:
+        gateway:
+            enabled: true
+            routes:
+                - id: degree
+                  uri: http://localhost:8080
+                  predicates:
+                      - Path=/degree/**
+                  filters:
+                      - StripPrefix=2
+
+#logging:
+#    file:
+#        name: D:/log/gateway.log
+#    level:
+#        springfox: error
+#        cn.edu.sgu.www.gateway: debug

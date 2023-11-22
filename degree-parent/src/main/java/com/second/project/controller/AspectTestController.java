@@ -24,11 +24,17 @@ public class AspectTestController {
         return Result.success();
     }
 
-
     @GetMapping("/testResubmit")
     @NotResubmit(delaySeconds = 3)
     public Result testResubmit() {
         log.info("调用成功");
+        return Result.success();
+    }
+
+    @GetMapping("/testIntranetAccess")
+//    @OnlyIntranetAccess
+    public Result testIntranetAccess() {
+        log.info("该接口只允许内部服务调用");
         return Result.success();
     }
 

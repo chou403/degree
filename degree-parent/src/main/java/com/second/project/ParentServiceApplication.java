@@ -8,10 +8,10 @@ import org.springframework.retry.annotation.EnableRetry;
 @EnableRetry
 @SpringBootApplication(scanBasePackages = {"com.second"})
 @MapperScan("com.second.project.mapper")
-public class SecondProjectServiceApplication {
+public class ParentServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SecondProjectServiceApplication.class, args);
+        SpringApplication.run(ParentServiceApplication.class, args);
     }
 
 }
