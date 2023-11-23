@@ -10,14 +10,18 @@ import java.lang.invoke.VarHandle;
  */
 public class TestVarHandle {
 
-//    private static final VarHandle x;
-//
-//    static {
-//        try {
-//            x = MethodHandles.lookup().findVarHandle(OpaqueTester.class, "x", int.class);
-//        } catch (NoSuchFieldException | IllegalAccessException e) {
-//            throw new Error((e));
-//        }
-//    }
+    private static final VarHandle x;
+
+    static {
+        try {
+            x = MethodHandles.lookup().findStaticVarHandle(TestVarHandle.class, "x", VarHandle.class);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            throw new Error((e));
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(x);
+    }
 
 }

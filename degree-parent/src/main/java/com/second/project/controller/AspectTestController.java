@@ -1,6 +1,7 @@
 package com.second.project.controller;
 
 import com.second.common.aop.annotations.NotResubmit;
+import com.second.common.aop.annotations.OnlyIntranetAccess;
 import com.second.common.bean.reponse.Result;
 import com.second.common.utils.JsonHelper;
 import com.second.project.domains.TestValidDTO;
@@ -32,7 +33,7 @@ public class AspectTestController {
     }
 
     @GetMapping("/testIntranetAccess")
-//    @OnlyIntranetAccess
+    @OnlyIntranetAccess
     public Result testIntranetAccess() {
         log.info("该接口只允许内部服务调用");
         return Result.success();

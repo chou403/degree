@@ -5,6 +5,7 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.second.common.aop.advice.BizException;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -37,11 +38,11 @@ public class JwtUtil {
                 .withExpiresAt(new Date(System.currentTimeMillis() + TOKEN_EXPIRE_TIME)).sign(algorithm);
     }
 
-    public static boolean checkToken(String token){
+    public static boolean checkToken(String token) {
         try {
             verifyToken(token);
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
@@ -60,7 +61,7 @@ public class JwtUtil {
         try {
             jwt = verifier.verify(token);
         } catch (Exception e) {
-            throw new RuntimeException("令牌无效，请重新登录");
+            throw new BizException("令牌无效，请重新登录");
         }
         return jwt.getClaims();
     }
