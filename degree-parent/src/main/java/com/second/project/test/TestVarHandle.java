@@ -10,18 +10,19 @@ import java.lang.invoke.VarHandle;
  */
 public class TestVarHandle {
 
-    private static final VarHandle x;
+    private static final VarHandle VALUE;
+    private volatile int num;
 
     static {
         try {
-            x = MethodHandles.lookup().findStaticVarHandle(TestVarHandle.class, "x", VarHandle.class);
+            VALUE = MethodHandles.lookup().findVarHandle(TestVarHandle.class, "num", int.class);
         } catch (NoSuchFieldException | IllegalAccessException e) {
             throw new Error((e));
         }
     }
 
     public static void main(String[] args) {
-        System.out.println(x);
+
     }
 
 }
