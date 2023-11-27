@@ -1,5 +1,5 @@
 rootProject.name = 'degree'
 include 'degree-common'
-include 'degree-parent'
+include 'degree-main'
 include 'degree-gateway'
 

@@ -5,13 +5,13 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="" />
+        <option name="gradleJvm" value="21" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/degree-common" />
             <option value="$PROJECT_DIR$/degree-gateway" />
-            <option value="$PROJECT_DIR$/degree-parent" />
+            <option value="$PROJECT_DIR$/degree-main" />
           </set>
         </option>
       </GradleProjectSettings>

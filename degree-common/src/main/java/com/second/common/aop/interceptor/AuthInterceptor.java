@@ -41,21 +41,21 @@ public class AuthInterceptor implements HandlerInterceptor {
             return false;
         }
 
-        try {
-            if (StringUtils.isBlank(token)) {
-                log.error("****** 用户令牌为空！******");
-                result401(response);
-                return false;
-            }
-            boolean checkResult = JwtUtil.checkToken(token);
-            if (!checkResult) {
-                log.error("****** 用户令牌无效！******");
-                result401(response);
-            }
-            return checkResult;
-        } catch (Exception e) {
-            log.error("请求错误:{}", e.getMessage());
-        }
+//        try {
+//            if (StringUtils.isBlank(token)) {
+//                log.error("****** 用户令牌为空！******");
+//                result401(response);
+//                return false;
+//            }
+//            boolean checkResult = JwtUtil.checkToken(token);
+//            if (!checkResult) {
+//                log.error("****** 用户令牌无效！******");
+//                result401(response);
+//            }
+//            return checkResult;
+//        } catch (Exception e) {
+//            log.error("请求错误:{}", e.getMessage());
+//        }
         return true;
     }
 
