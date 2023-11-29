@@ -1,6 +1,7 @@
 package com.second.common.utils;
 
 import com.second.common.consts.BaseConstants;
+import org.apache.commons.lang3.time.DateUtils;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -45,6 +46,18 @@ public class DateUtil {
             return format.parse(dateStr);
         } catch (ParseException e1) {
             return str2Date(dateStr, ++index);
+        }
+    }
+
+    /**
+     * 校验是否日期格式
+     */
+    public static boolean isValidDate(String dateStr) {
+        try {
+            DateUtils.parseDateStrictly(dateStr, FMT_LIST.toArray(String[]::new));
+            return true;
+        } catch (ParseException e) {
+            return false;
         }
     }
 
