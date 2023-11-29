@@ -24,6 +24,7 @@ ext {
                     "redissonSpringDataVersion": '3.24.3',
                     "springCloudGatewayVersion": '4.0.8',
                     "springRabbitVersion"      : '3.1.0',
+                    "springKafkaVersion"       : '3.1.0',
 
 //            "elasticsearchVersion"     : '8.6.2',
 //            "jakartaVersion"           : '2.1.1',
@@ -61,7 +62,8 @@ ext {
                     "springRetry"                : "org.springframework.retry:spring-retry:$version.springRetryVersion",
                     "redissonSpringData"         : "org.redisson:redisson-spring-data-31:$version.redissonSpringDataVersion",
                     "springCloudGateway"         : "org.springframework.cloud:spring-cloud-starter-gateway:$version.springCloudGatewayVersion",
-                    "springRabbit"               : "org.springframework.amqp:spring-rabbit:$version.springRabbitVersion"
+                    "springRabbit"               : "org.springframework.amqp:spring-rabbit:$version.springRabbitVersion",
+                    "springKafka"                : "org.springframework.kafka:spring-kafka:$version.springKafkaVersion"
             ]
 
 }

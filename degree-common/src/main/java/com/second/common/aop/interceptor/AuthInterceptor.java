@@ -3,7 +3,6 @@ package com.second.common.aop.interceptor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.second.common.bean.StatusEnum;
 import com.second.common.bean.reponse.Result;
-import com.second.common.utils.JwtUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +31,10 @@ public class AuthInterceptor implements HandlerInterceptor {
         if (path.contains("/error")) {
             // 请求错误页面
             log.info("请求发生错误！跳转error地址");
+            return true;
+        }
+
+        if (path.contains("/health")) {
             return true;
         }
 
