@@ -1,5 +1,6 @@
 package com.second.common.utils;
 
+import com.second.common.aop.advice.BizException;
 import com.second.common.consts.BaseConstants;
 import org.apache.commons.lang3.time.DateUtils;
 
@@ -59,6 +60,22 @@ public class DateUtil {
         } catch (ParseException e) {
             return false;
         }
+    }
+
+    /**
+     * 字符串日期转为 yyyy-MM-dd HH:mm:ss 格式
+     */
+    public static String anyDateToStr(String str) {
+        String resultDate;
+
+        try {
+            Date date = DateUtils.parseDate(str, FMT_LIST.toArray(String[]::new));
+            resultDate = date2str(date, BaseConstants.DATE_TIME_FORMAT_YYYY_MM_DD_HH_MI_SS);
+        } catch (ParseException var3) {
+            throw new BizException(var3.getMessage());
+        }
+
+        return resultDate;
     }
 
     /***

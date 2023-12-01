@@ -7,6 +7,7 @@ dependencies {
     implementation 'com.google.guava:guava'
     implementation 'com.auth0:java-jwt'
     implementation 'org.mybatis:mybatis'
+    implementation 'org.mybatis:mybatis-spring'
     implementation 'cn.hutool:hutool-all'
     implementation 'org.apache.httpcomponents:httpclient'
     implementation 'jakarta.validation:jakarta.validation-api'
