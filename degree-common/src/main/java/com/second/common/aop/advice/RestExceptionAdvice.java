@@ -1,14 +1,13 @@
 package com.second.common.aop.advice;
 
+import com.second.common.bean.HttpEnum;
 import com.second.common.bean.reponse.Result;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
+import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -17,8 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
-import java.lang.reflect.Field;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 异常处理
@@ -31,97 +30,69 @@ import java.util.List;
 public class RestExceptionAdvice {
 
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-    public Result httpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException ex, HttpServletResponse response, HttpServletRequest request) {
-        response.setStatus(HttpStatus.NOT_FOUND.value());
-        return Result.error(HttpStatus.NOT_FOUND.value(), "请求路径错误或者请求方式错误(method)");
+    public Result<Object> httpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException ex) {
+        log.error(ex.getMessage(), ex);
+        return Result.error(HttpEnum.NOT_FOUND, "请求路径错误或者请求方式错误(method)");
     }
-
 
     @ExceptionHandler(NoHandlerFoundException.class)
-    public Result noHandlerFoundException(NoHandlerFoundException ex, HttpServletRequest request, HttpServletResponse response) {
+    public Result<Object> noHandlerFoundException(NoHandlerFoundException ex, HttpServletRequest request) {
         if (request.getMethod().equalsIgnoreCase(RequestMethod.OPTIONS.name())) {
-            response.setStatus(HttpStatus.OK.value());
             return Result.success();
         }
-        response.setStatus(HttpStatus.NOT_FOUND.value());
-        return Result.error(HttpStatus.NOT_FOUND.value(), ex.getLocalizedMessage());
+        log.error(ex.getMessage(), ex);
+        return Result.error(HttpEnum.NOT_FOUND, ex.getLocalizedMessage());
     }
 
-
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Result methodArgumentNotValidException(MethodArgumentNotValidException ex, HttpServletResponse response, HttpServletRequest request) {
-        BindingResult bindingResult = ex.getBindingResult();
-        StringBuilder sbf = new StringBuilder();
-        List<ObjectError> errors = bindingResult.getAllErrors();
-        for (ObjectError error : errors) {
-            try {
-                Field field = error.getClass().getDeclaredField("field");
-                field.setAccessible(true);
-                sbf.append(field.get(error)).append(" ").append(error.getDefaultMessage()).append(";");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+    /**
+     * 参数校验类异常
+     */
+    @ExceptionHandler({MethodArgumentNotValidException.class, BindException.class})
+    public Result<Object> handleBingException(Exception ex) {
+        if (ex instanceof MethodArgumentNotValidException) {
+            BindingResult bindingResult = ((MethodArgumentNotValidException) ex).getBindingResult();
+            return getErrors(bindingResult);
+        } else if (ex instanceof BindException) {
+            BindingResult bindingResult = ((BindException) ex).getBindingResult();
+            return getErrors(bindingResult);
         }
-        response.setStatus(HttpStatus.BAD_REQUEST.value());
-        return Result.error(HttpStatus.BAD_REQUEST.value(), sbf.toString());
+        return Result.error(HttpEnum.SYSTEM_ERROR);
     }
 
-    @ExceptionHandler(NullPointerException.class)
-    public Result nullPointerException(Exception ex, HttpServletResponse response, HttpServletRequest request) {
-        response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-        return Result.error(HttpStatus.INTERNAL_SERVER_ERROR.value(), ex.getMessage());
+    protected Result<Object> getErrors(BindingResult bindingResult) {
+        List<FieldError> fieldErrors = bindingResult.getFieldErrors();
+        String collectStr = fieldErrors.stream()
+                .map(DefaultMessageSourceResolvable::getDefaultMessage)
+                .collect(Collectors.joining(","));
+        return Result.error(HttpEnum.PARAM_ERROR, collectStr);
     }
 
-//    @ExceptionHandler(CommonMsgException.class)
-//    public Result msgException(CommonMsgException ex, HttpServletResponse response, HttpServletRequest request) {
-//        response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-//        return Result.error(HttpStatus.INTERNAL_SERVER_ERROR.value(), ex.getMessage());
-//    }
-
-//    @ExceptionHandler(AuthException.class)
-//    public Result authException(AuthException ex, HttpServletResponse response, HttpServletRequest request) {
-//        response.setStatus(ex.getHttpStatus());
-//        return Result.error(ex.getResultCode(), ex.getMessage());
-//    }
-
-//    @ExceptionHandler(HttpServerNotSupportException.class)
-//    public Result tsdbException(HttpServerNotSupportException ex, HttpServletResponse response, HttpServletRequest request) {
-//        response.setStatus(HttpStatus.CONFLICT.value());
-//        return Result.error(HttpStatus.CONFLICT.value(), ex.getMessage());
-//    }
-
-    @ExceptionHandler(BindException.class)
-    public Result handleBingException(BindException e, HttpServletResponse response, HttpServletRequest request) {
-        response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-        FieldError fieldError = e.getFieldError();
-        assert fieldError != null;
-        return Result.error(HttpStatus.INTERNAL_SERVER_ERROR.value(), fieldError.getDefaultMessage());
+    /**
+     * 运行时异常
+     */
+    @ExceptionHandler({NumberFormatException.class, IllegalArgumentException.class,
+            NullPointerException.class})
+    public Result<Object> runtimeException(Exception ex) {
+        log.error(ex.getMessage(), ex);
+        return Result.error(HttpEnum.SYSTEM_ERROR, ex.getMessage());
     }
 
-    @ExceptionHandler(NumberFormatException.class)
-    public Result numberFormatException(NumberFormatException ex, HttpServletResponse response, HttpServletRequest request) {
-        String errorMessage = "Invalid number format. Please enter a valid number.";
-        response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-        return Result.error(HttpStatus.INTERNAL_SERVER_ERROR.value(), errorMessage);
-    }
-
-    @ExceptionHandler(IllegalArgumentException.class)
-    public Result illegalArgumentException(IllegalArgumentException ex, HttpServletResponse response, HttpServletRequest request) {
-        String errorMessage = "Invalid argument. Please provide a valid argument.";
-        response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-        return Result.error(HttpStatus.INTERNAL_SERVER_ERROR.value(), errorMessage);
-    }
-
+    /**
+     * 自定义异常
+     */
     @ExceptionHandler(BizException.class)
-    public Result bizExceptionAdvice(BizException ex, HttpServletResponse response, HttpServletRequest request) {
-        response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-        return Result.error(HttpStatus.INTERNAL_SERVER_ERROR.value(), ex.getMessage());
+    public Result<Object> numberFormatException(Exception ex) {
+        log.error(ex.getMessage(), ex);
+        return Result.error(HttpEnum.SYSTEM_ERROR, ex.getMessage());
     }
 
+    /**
+     * 全局异常
+     */
     @ExceptionHandler(Exception.class)
-    public Result unknownException(Exception ex, HttpServletResponse response, HttpServletRequest request) {
-        response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-        return Result.error(HttpStatus.INTERNAL_SERVER_ERROR.value(), ex.getMessage());
+    public Result<Object> unknownException(Exception ex) {
+        log.error(ex.getMessage(), ex);
+        return Result.error(HttpEnum.SYSTEM_ERROR, ex.getMessage());
     }
 
 }

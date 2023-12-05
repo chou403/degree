@@ -20,10 +20,10 @@ public class Result<T> implements Serializable {
     @Serial
     private static final long serialVersionUID = -2937589581985593565L;
 
-    /**
-     * 状态值
-     */
-    private Boolean success;
+//    /**
+//     * 状态值 只有 code 200 成功 剔除 success
+//     */
+//    private Boolean success;
 
     /**
      * 状态码
@@ -47,7 +47,6 @@ public class Result<T> implements Serializable {
      * @param msg  提示信息
      */
     public Result(Integer code, String msg) {
-        this.success = false;
         this.code = code;
         this.msg = msg;
     }
@@ -55,26 +54,11 @@ public class Result<T> implements Serializable {
     /**
      * 构造函数
      *
-     * @param success 状态
-     * @param code    状态码
-     * @param msg     提示信息
+     * @param code 状态码
+     * @param msg  提示信息
+     * @param data 结果
      */
-    public Result(Boolean success, Integer code, String msg) {
-        this.success = success;
-        this.code = code;
-        this.msg = msg;
-    }
-
-    /**
-     * 构造函数
-     *
-     * @param success 状态
-     * @param code    状态码
-     * @param msg     提示信息
-     * @param data    结果
-     */
-    public Result(Boolean success, Integer code, String msg, T data) {
-        this.success = success;
+    public Result(Integer code, String msg, T data) {
         this.code = code;
         this.msg = msg;
         this.data = data;
@@ -124,7 +108,7 @@ public class Result<T> implements Serializable {
      * @return 返回 result
      */
     public static <T> Result<T> success() {
-        return new Result<>(true, SUCCESS_CODE, SUCCESS_MSG);
+        return new Result<>(SUCCESS_CODE, SUCCESS_MSG);
     }
 
     /**
@@ -135,7 +119,7 @@ public class Result<T> implements Serializable {
      * @return 返回 result
      */
     public static <T> Result<T> success(T t) {
-        return new Result<>(true, SUCCESS_CODE, SUCCESS_MSG, t);
+        return new Result<>(SUCCESS_CODE, SUCCESS_MSG, t);
     }
 
     /**
@@ -147,7 +131,7 @@ public class Result<T> implements Serializable {
      * @return 返回 result
      */
     public static <T> Result<T> success(T t, String msg) {
-        return new Result<>(true, SUCCESS_CODE, msg, t);
+        return new Result<>(SUCCESS_CODE, msg, t);
     }
 
     /**
@@ -177,7 +161,7 @@ public class Result<T> implements Serializable {
      * 返回异常
      *
      * @param code 状态码
-     * @param <T> 泛型
+     * @param <T>  泛型
      * @return 返回 result
      */
     public static <T> Result<T> error(Integer code) {
@@ -200,7 +184,7 @@ public class Result<T> implements Serializable {
      *
      * @param code 状态码
      * @param msg  提示信息
-     * @param <T> 泛型
+     * @param <T>  泛型
      * @return 返回 result
      */
     public static <T> Result<T> error(Integer code, String msg) {

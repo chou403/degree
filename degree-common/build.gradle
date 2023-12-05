@@ -8,6 +8,7 @@ dependencies {
     implementation 'com.auth0:java-jwt'
     implementation 'org.mybatis:mybatis'
     implementation 'org.mybatis:mybatis-spring'
+    implementation 'com.baomidou:mybatis-plus-boot-starter'
     implementation 'cn.hutool:hutool-all'
     implementation 'org.apache.httpcomponents:httpclient'
     implementation 'jakarta.validation:jakarta.validation-api'
@@ -16,6 +17,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-aop'
     implementation 'com.fasterxml.jackson.core:jackson-databind'
     implementation 'org.redisson:redisson-spring-data-31'
+    implementation 'org.springframework.kafka:spring-kafka'
+
 }
 
 jar {

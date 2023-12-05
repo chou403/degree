@@ -17,15 +17,15 @@ public class WebMvcConfig implements WebMvcConfigurer {
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-       // 登录操作不拦截
+        String[] swaggerExcludePathPatterns = {
+                "/doc.html", "/swagger**/**", "/swagger-resources/**", "/webjars/**", "/v3/**", "/favicon.ico"
+        };
+        // 登录操作不拦截
         registry.addInterceptor(new AuthInterceptor())
                 .addPathPatterns("/**")
                 .excludePathPatterns("/sys/login")
                 .excludePathPatterns("/sys/register")
-                .excludePathPatterns("/swagger-ui.html/**")
-                .excludePathPatterns("/v2/**")
-                .excludePathPatterns("/webjars/**")
-                .excludePathPatterns("/swagger-resources/**")
+                .excludePathPatterns(swaggerExcludePathPatterns)
                 .excludePathPatterns("/csrf/**");
     }
 

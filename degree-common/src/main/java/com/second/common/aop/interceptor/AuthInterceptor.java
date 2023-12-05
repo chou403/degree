@@ -1,12 +1,11 @@
 package com.second.common.aop.interceptor;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.second.common.bean.StatusEnum;
+import com.second.common.bean.HttpEnum;
 import com.second.common.bean.reponse.Result;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -38,11 +37,11 @@ public class AuthInterceptor implements HandlerInterceptor {
             return true;
         }
 
-        if (StringUtils.isEmpty(from) || !"public".equals(from)) {
-            log.error("****** 网关令牌为空！******");
-            result401(response);
-            return false;
-        }
+//        if (StringUtils.isEmpty(from) || !"public".equals(from)) {
+//            log.error("****** 网关令牌为空！******");
+//            result401(response);
+//            return false;
+//        }
 
 //        try {
 //            if (StringUtils.isBlank(token)) {
@@ -67,10 +66,10 @@ public class AuthInterceptor implements HandlerInterceptor {
             ObjectMapper objectMapper = new ObjectMapper();
             StringWriter sw = new StringWriter();
 
-            Result result = Result.error(StatusEnum.AUTH_ERROR.getCode(), "访问验证超时，请重新登录");
+            Result result = Result.error(HttpEnum.AUTH_ERROR.getCode(), "访问验证超时，请重新登录");
             objectMapper.writeValue(sw, result);
 
-            response.setStatus(StatusEnum.AUTH_ERROR.getCode());
+            response.setStatus(HttpEnum.AUTH_ERROR.getCode());
             response.setContentType("application/json;charset=UTF-8");
             PrintWriter writer = response.getWriter();
             log.info(sw.toString());

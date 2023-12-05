@@ -2,7 +2,7 @@ apply from: 'config.gradle'
 
 // 构建 gradle 脚本自身需要的资源
 buildscript {
-    ext.springBootVersion = '3.1.4'
+    ext.springBootVersion = '3.2.0'
 
     // 仓库
     repositories {
@@ -49,8 +49,6 @@ subprojects {
         implementation 'org.projectlombok:lombok'
         testImplementation rootProject.ext.dependencies.junitJupiterApi
         testRuntimeOnly rootProject.ext.dependencies.junitJupiterEngine
-//        implementation rootProject.ext.dependencies.tomcatEmbedCore
-//        implementation rootProject.ext.dependencies.tomcatEmbedEl
         implementation rootProject.ext.dependencies.snakeyaml
         implementation rootProject.ext.dependencies.jacksonDatabind
     }

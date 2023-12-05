@@ -3,8 +3,8 @@ package com.second.main.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.second.main.entity.Employee;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  * {@code @date} 2023/12/1
  * {@code @description} EmployeeMapper
  */
-@Repository
+@Mapper
 public interface EmployeeMapper extends BaseMapper<Employee> {
 
     @Insert("<script>" +

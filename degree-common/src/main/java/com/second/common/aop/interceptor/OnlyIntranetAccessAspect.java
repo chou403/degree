@@ -1,7 +1,7 @@
 package com.second.common.aop.interceptor;
 
 import com.second.common.aop.advice.BizException;
-import com.second.common.bean.StatusEnum;
+import com.second.common.bean.HttpEnum;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -38,7 +38,7 @@ public class OnlyIntranetAccessAspect {
         String from = hsr.getHeader("from");
         if (!StringUtils.isEmpty(from) && "public".equals(from)) {
             log.error("This api is only allowed invoked by intranet source");
-            throw new BizException(StatusEnum.NOT_PERMISSION.getMessage());
+            throw new BizException(HttpEnum.NOT_PERMISSION.getMessage());
         }
     }
 }

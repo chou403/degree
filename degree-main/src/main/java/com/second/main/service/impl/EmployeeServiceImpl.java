@@ -1,5 +1,6 @@
 package com.second.main.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.second.common.aop.advice.BizException;
 import com.second.common.config.ExecutorConfig;
 import com.second.common.config.SqlContext;
@@ -25,11 +26,11 @@ import java.util.concurrent.Future;
  */
 @Slf4j
 @Service("employeeService")
-public class EmployeeServiceImpl implements EmployeeService {
+public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> implements EmployeeService {
 
     private final SqlContext sqlContext;
 
-    public EmployeeServiceImpl(EmployeeMapper employeeMapper, SqlContext sqlContext) {
+    public EmployeeServiceImpl(SqlContext sqlContext) {
         this.sqlContext = sqlContext;
     }
 

@@ -3,10 +3,12 @@ package com.second.main.controller;
 import cn.hutool.extra.qrcode.QrCodeUtil;
 import com.second.common.bean.reponse.Result;
 import com.second.common.utils.JsonHelper;
+import com.second.main.domains.CommonLoginDTO;
 import com.second.main.entity.UserToken;
 import com.second.main.mapper.UserTokenMapper;
-import com.second.main.domains.CommonLoginDTO;
 import com.second.main.service.LoginService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -20,6 +22,7 @@ import java.util.List;
  * {@code @date} 2023/7/14
  * {@code @description} 登录
  */
+@Tag(name = "登录")
 @Slf4j
 @RestController
 @RequestMapping("/login")
@@ -34,12 +37,14 @@ public class LoginController {
     @Resource
     private UserTokenMapper loginMapper;
 
+    @Operation(summary = "信息列表")
     @GetMapping("/selectList")
     public String selectList() {
         List<UserToken> list = loginMapper.selectList(null);
         return JsonHelper.parseToJson(list);
     }
 
+    @Operation(summary = "登录")
     @PostMapping("/commonLogin")
     public Object loginCommon(@RequestBody CommonLoginDTO dto) {
         Result result = Result.success();
@@ -54,6 +59,7 @@ public class LoginController {
         return result;
     }
 
+    @Operation(summary = "获取登录二维码")
     @PostMapping("/getLoginQr")
     public void createCodeImg(HttpServletRequest request, HttpServletResponse response) {
         response.setHeader("Pragma", "No-cache");
@@ -77,13 +83,7 @@ public class LoginController {
         }
     }
 
-    /**
-     * 确认身份接口：确定身份以及判断是否二维码过期等
-     *
-     * @param token
-     * @param userId
-     * @return
-     */
+    @Operation(summary = "校验登录是否过期")
     @GetMapping("/bindUserIdAndToken")
     @ResponseBody
     public Object bindUserIdAndToken(@RequestParam("token") String token,

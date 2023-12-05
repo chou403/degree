@@ -8,7 +8,7 @@ import lombok.Getter;
  * {@code @date}    2023/5/4 15:25
  */
 @Getter
-public enum StatusEnum {
+public enum HttpEnum {
     /**
      * 成功
      */
@@ -26,6 +26,10 @@ public enum StatusEnum {
      */
     NOT_PERMISSION(403, "没有访问权限"),
     /**
+     * 没有访问权限
+     */
+    NOT_FOUND(404, "请求路径错误"),
+    /**
      * 没有登录或者登录已经过期
      */
     NOT_LOGIN(405, "没有登录或者登录已经过期"),
@@ -42,7 +46,7 @@ public enum StatusEnum {
      */
     FAILED(601, "操作失败");
 
-    StatusEnum(Integer code, String message) {
+    HttpEnum(Integer code, String message) {
         this.code = code;
         this.message = message;
     }

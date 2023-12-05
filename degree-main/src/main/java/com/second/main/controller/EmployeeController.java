@@ -3,6 +3,8 @@ package com.second.main.controller;
 import com.second.common.aop.advice.BizException;
 import com.second.main.entity.Employee;
 import com.second.main.service.EmployeeService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +19,7 @@ import java.util.List;
  * {@code @date} 2023/12/1
  * {@code @description} employee controller
  */
+@Tag(name = "多线程插入人员")
 @Slf4j
 @RestController
 @RequestMapping("/employee")
@@ -28,6 +31,7 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
+    @Operation(summary = "插入人员")
     @GetMapping("/add")
     public String batchAddEmployee() {
 
