@@ -8,7 +8,6 @@ import org.springframework.kafka.annotation.PartitionOffset;
 import org.springframework.kafka.annotation.TopicPartition;
 import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -18,7 +17,7 @@ import java.util.List;
  * {@code @description} kafka consumer
  */
 @Slf4j
-@Component
+//@Component
 public class KafkaConsumer {
 
     private final String TOPIC1 = "sb_topic";

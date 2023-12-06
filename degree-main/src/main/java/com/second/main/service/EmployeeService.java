@@ -1,7 +1,7 @@
 package com.second.main.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.second.main.entity.Employee;
+import com.second.main.entity.EmployeeEntity;
 
 import java.util.List;
 
@@ -10,8 +10,10 @@ import java.util.List;
  * {@code @date} 2023/12/1
  * {@code @description} EmployeeService
  */
-public interface EmployeeService extends IService<Employee> {
+public interface EmployeeService extends IService<EmployeeEntity> {
 
-    void saveThread(List<Employee> employeeList) throws Exception;
+    void saveProgramTransaction(List<EmployeeEntity> employeeList) throws Exception;
+
+    void saveDeclarativeTransaction();
 
 }

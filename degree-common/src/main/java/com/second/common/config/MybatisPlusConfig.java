@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * {@code @description} mybatis plus 分页插件
  */
 @Configuration
-public class MybatisPlusPageConfig {
+public class MybatisPlusConfig {
 
     @Bean
     public MybatisPlusInterceptor mybatisPlusInterceptor() {

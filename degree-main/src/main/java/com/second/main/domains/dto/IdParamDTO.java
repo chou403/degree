@@ -1,4 +1,4 @@
-package com.second.main.domains;
+package com.second.main.domains.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
@@ -11,7 +11,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class IdParam {
+public class IdParamDTO {
     @Schema(description = "ID，记录唯一标识")
     private Integer id;
 }

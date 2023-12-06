@@ -35,12 +35,11 @@ public class GeneratorMySQL {
     /**
      * java代码保存目录
      */
-//    public static final String SAVE_PATH = System.getProperty("user.dir") + "/src/main/java";
-    public static final String SAVE_PATH = "woniu-code-generator";
+    public static final String SAVE_PATH = "code-generator";
     /**
      * xml保存目录
      */
-    public static final String XML_SAVE_PATH = "woniu-code-generator";
+    public static final String XML_SAVE_PATH = "code-generator";
     /**
      * 保存到包下面
      */
@@ -48,7 +47,7 @@ public class GeneratorMySQL {
     /**
      * 要生成的表
      */
-    public static final String[] TABLES = {"sys_user"};
+    public static final String[] TABLES = {"user"};
 
 
     /**
@@ -62,9 +61,9 @@ public class GeneratorMySQL {
                             .enableSpringdoc() // 是否启用springdoc注解
                             .dateType(DateType.ONLY_DATE) // 时间策略
                             .commentDate("yyyy-MM-dd") // 注释日期
-                            .outputDir(SAVE_PATH) // 输出目录
-                            // .disableOpenDir()// 生成后禁止打开所生成的系统目录
-                            .fileOverride(); // 覆盖已生成文件
+                            .outputDir(SAVE_PATH); // 输出目录
+                    // .disableOpenDir()// 生成后禁止打开所生成的系统目录
+                    // .fileOverride(); // 覆盖已生成文件
 
                 }).packageConfig(builder -> {
                     builder
@@ -91,8 +90,8 @@ public class GeneratorMySQL {
                             .enableRemoveIsPrefix() //开启 Boolean 类型字段移除 is 前缀
                             .disableSerialVersionUID()  //禁用生成 serialVersionUID
                             .idType(IdType.AUTO)// 主键生成策略 此处为 自增（可选）
-                            .naming(NamingStrategy.underline_to_camel) // 表名 下划线 -》 驼峰命名
-                            .columnNaming(NamingStrategy.underline_to_camel) // 字段名 下划线 -》 驼峰命名
+                            .naming(NamingStrategy.underline_to_camel) // 表名 下划线 -> 驼峰命名
+                            .columnNaming(NamingStrategy.underline_to_camel) // 字段名 下划线 -> 驼峰命名
                             .formatFileName("%sEntity") // Entity 文件名称
                             //.enableColumnConstant()
                             .enableActiveRecord()
@@ -109,7 +108,7 @@ public class GeneratorMySQL {
 
                             // Mapper 策略配置
                             .mapperBuilder()
-                            .enableMapperAnnotation() // 开启@Mapper
+                            // .enableMapperAnnotation() // 开启@Mapper
                             .enableBaseColumnList() // 启用 columnList (通用查询结果列)
                             .enableBaseResultMap() // 启动resultMap
                             .formatMapperFileName("%sMapper") // Mapper 文件名称

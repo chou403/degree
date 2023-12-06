@@ -2,15 +2,18 @@ package com.second.main.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.second.common.aop.advice.BizException;
+import com.second.common.aop.annotations.MainTransaction;
 import com.second.common.config.ExecutorConfig;
 import com.second.common.config.SqlContext;
 import com.second.common.utils.CommonUtil;
-import com.second.main.entity.Employee;
+import com.second.main.entity.EmployeeEntity;
 import com.second.main.mapper.EmployeeMapper;
 import com.second.main.service.EmployeeService;
+import com.second.main.service.SubEmployeeService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -25,13 +28,16 @@ import java.util.concurrent.Future;
  * {@code @description} EmployeeServiceImpl
  */
 @Slf4j
-@Service("employeeService")
-public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> implements EmployeeService {
+@Service
+public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, EmployeeEntity> implements EmployeeService {
 
     private final SqlContext sqlContext;
 
-    public EmployeeServiceImpl(SqlContext sqlContext) {
+    private final SubEmployeeService subEmployeeService;
+
+    public EmployeeServiceImpl(SqlContext sqlContext, SubEmployeeService subEmployeeService) {
         this.sqlContext = sqlContext;
+        this.subEmployeeService = subEmployeeService;
     }
 
     /**
@@ -146,7 +152,7 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
      * 改造成功处理多线程回滚示例代码
      */
     @Override
-    public void saveThread(List<Employee> employeeList) throws Exception {
+    public void saveProgramTransaction(List<EmployeeEntity> employeeList) throws Exception {
         // 获取数据库连接,获取会话(内部自有事务)
         SqlSession sqlSession = sqlContext.getSqlSession();
         Connection connection = sqlSession.getConnection();
@@ -158,8 +164,8 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
             employeeMapper.delete(null);
             ExecutorService service = ExecutorConfig.getThreadPool();
             List<Callable<Integer>> callableList = new ArrayList<>();
-            List<List<Employee>> lists = CommonUtil.averageAssign(employeeList, 5);
-            for (List<Employee> list : lists) {
+            List<List<EmployeeEntity>> lists = CommonUtil.averageAssign(employeeList, 5);
+            for (List<EmployeeEntity> list : lists) {
                 Callable<Integer> callable = () -> employeeMapper.saveBatchEmployee(list);
                 callableList.add(callable);
             }
@@ -182,4 +188,18 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeMapper, Employee> i
         }
 
     }
+
+    /**
+     * 使用 @MainTransaction 结合 @SonTransaction 进行声明式事务处理
+     */
+    @Override
+    @MainTransaction(3)
+    @Transactional(rollbackFor = Exception.class)
+    public void saveDeclarativeTransaction() {
+        subEmployeeService.sonMethod1("路飞", Thread.currentThread());
+        subEmployeeService.sonMethod2("索隆", "山治", Thread.currentThread());
+        subEmployeeService.sonMethod3("娜美", Thread.currentThread());
+        subEmployeeService.sonMethod4("罗宾");
+    }
+
 }

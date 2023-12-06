@@ -14,49 +14,45 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * <p>
- * 用户表
- * </p>
- *
  * @author chouchou
- * @since 2023-12-05
+ * @since 2023-12-06
  */
 @Getter
 @Setter
 @Accessors(chain = true)
-@TableName("sys_user")
-@Schema(name = "SysUserEntity", description = "用户表")
-public class SysUserEntity extends Model<SysUserEntity> {
+@TableName("employee")
+@Schema(name = "EmployeeEntity", description = "人员表")
+public class EmployeeEntity extends Model<EmployeeEntity> {
 
-    @TableId(value = "id", type = IdType.AUTO)
-    private Long id;
+    @TableId(value = "employee_id", type = IdType.AUTO)
+    private Integer employeeId;
 
-    @Schema(description = "用户名")
-    @TableField("user_name")
-    private String userName;
+    @TableField("age")
+    private Integer age;
 
-    @Schema(description = "昵称")
-    @TableField("nick_name")
-    private String nickName;
+    @TableField("employee_name")
+    private String employeeName;
 
-    @Schema(description = "密码")
-    @TableField("password")
-    private String password;
+    @TableField("birth_date")
+    private Date birthDate;
 
-    @Schema(description = "姓名")
-    @TableField("name")
-    private String name;
+    @TableField("gender")
+    private Integer gender;
 
-    @Schema(description = "创建时间")
+    @TableField("id_number")
+    private String idNumber;
+
     @TableField("create_time")
     private Date createTime;
 
-    @Schema(description = "修改时间")
     @TableField("update_time")
     private Date updateTime;
 
+    @TableField("status")
+    private Integer status;
+
     @Override
     public Serializable pkVal() {
-        return this.id;
+        return this.employeeId;
     }
 }

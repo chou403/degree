@@ -6,8 +6,8 @@ import com.second.common.utils.JsonHelper;
 import com.second.common.utils.StringUtil;
 import com.second.main.config.socket.WebSocketServer;
 import com.second.main.domains.CommonLoginDTO;
-import com.second.main.entity.User;
-import com.second.main.entity.UserToken;
+import com.second.main.entity.UserEntity;
+import com.second.main.entity.UserTokenEntity;
 import com.second.main.mapper.UserMapper;
 import com.second.main.mapper.UserTokenMapper;
 import com.second.main.service.LoginService;
@@ -41,12 +41,12 @@ public class LoginServiceImpl implements LoginService {
      */
     @Override
     public String loginCommon(CommonLoginDTO dto) throws Exception {
-        QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
+        QueryWrapper<UserEntity> userQueryWrapper = new QueryWrapper<>();
         userQueryWrapper
                 .eq("user_code", dto.getUserCode())
                 .eq("password", dto.getPassword());
 
-        User user = userMapper.selectOne(userQueryWrapper);
+        UserEntity user = userMapper.selectOne(userQueryWrapper);
 
         if (StringUtil.isNullOrEmpty(user)) {
             throw new Exception("账号不存在，请重新输入");
@@ -58,11 +58,11 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public String bindUserIdAndToken(Integer userId, String token, Integer projId) throws Exception {
 
-        QueryWrapper<UserToken> userTokenQueryWrapper = new QueryWrapper();
+        QueryWrapper<UserTokenEntity> userTokenQueryWrapper = new QueryWrapper();
         userTokenQueryWrapper.eq("uuid", token);
 //        userTokenQueryWrapper.eq("user_id", userId);
 
-        UserToken userToken = new UserToken();
+        UserTokenEntity userToken = new UserTokenEntity();
         userToken.setUuid(token);
         userToken = userTokenMapper.selectOne(userTokenQueryWrapper);
 
@@ -109,7 +109,7 @@ public class LoginServiceImpl implements LoginService {
         String id = uuid.toString();
         id = id.replace("-", "");//替换掉中间的那个横杠
 
-        UserToken userToken = new UserToken();
+        UserTokenEntity userToken = new UserTokenEntity();
         userToken.setUuid(id);
         userToken.setState(1);
         userToken.setCreateTime(new Date());

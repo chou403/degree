@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
  * {@code @date} 2023/11/16
  * {@code @description} test
  */
-@Tag(name = "切面")
+@Tag(name = "切面 测试")
 @Slf4j
 @RestController
 @RequestMapping("/aspectTest")

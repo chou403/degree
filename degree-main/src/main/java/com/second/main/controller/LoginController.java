@@ -4,7 +4,7 @@ import cn.hutool.extra.qrcode.QrCodeUtil;
 import com.second.common.bean.reponse.Result;
 import com.second.common.utils.JsonHelper;
 import com.second.main.domains.CommonLoginDTO;
-import com.second.main.entity.UserToken;
+import com.second.main.entity.UserTokenEntity;
 import com.second.main.mapper.UserTokenMapper;
 import com.second.main.service.LoginService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -40,7 +40,7 @@ public class LoginController {
     @Operation(summary = "信息列表")
     @GetMapping("/selectList")
     public String selectList() {
-        List<UserToken> list = loginMapper.selectList(null);
+        List<UserTokenEntity> list = loginMapper.selectList(null);
         return JsonHelper.parseToJson(list);
     }
 
@@ -86,9 +86,7 @@ public class LoginController {
     @Operation(summary = "校验登录是否过期")
     @GetMapping("/bindUserIdAndToken")
     @ResponseBody
-    public Object bindUserIdAndToken(@RequestParam("token") String token,
-                                     @RequestParam("userId") Integer userId,
-                                     @RequestParam(required = false, value = "projId") Integer projId) {
+    public Object bindUserIdAndToken(@RequestParam("token") String token, @RequestParam("userId") Integer userId, @RequestParam(required = false, value = "projId") Integer projId) {
         Result result = Result.success();
         try {
             result.setData(loginService.bindUserIdAndToken(userId, token, projId));

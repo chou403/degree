@@ -3,7 +3,6 @@ package com.second.main.config.rabbit;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.stereotype.Component;
 
 /**
  * {@code @author}  chouchou
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Component;
  * {@code @description} rabbit mq consumer
  */
 @Slf4j
-@Component
+//@Component
 public class RabbitCoreConsumer {
 
     @RabbitHandler
