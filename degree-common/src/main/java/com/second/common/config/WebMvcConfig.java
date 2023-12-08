@@ -4,6 +4,7 @@ import com.second.common.aop.interceptor.AuthInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
@@ -18,7 +19,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         String[] swaggerExcludePathPatterns = {
-                "/doc.html", "/swagger**/**", "/swagger-resources/**", "/webjars/**", "/v3/**", "/favicon.ico"
+                "/doc.html", "/swagger**/**", "/swagger-resources/**", "/webjars/**", "/v3/**"
         };
         // 登录操作不拦截
         registry.addInterceptor(new AuthInterceptor())
@@ -27,6 +28,16 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/sys/register")
                 .excludePathPatterns(swaggerExcludePathPatterns)
                 .excludePathPatterns("/csrf/**");
+    }
+
+    /**
+     * 静态资源映射
+     *
+     * @param registry
+     */
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("favicon.ico").addResourceLocations("classpath:/static/");
     }
 
     @Override

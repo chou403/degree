@@ -18,6 +18,7 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-databind'
     implementation 'org.redisson:redisson-spring-data-31'
     implementation 'org.springframework.kafka:spring-kafka'
+    implementation 'com.alibaba:easyexcel'
 
 }
 

@@ -5,13 +5,13 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
-import java.io.Serializable;
-import java.util.Date;
-
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author chouchou
@@ -39,13 +39,17 @@ public class UserEntity extends Model<UserEntity> {
     @TableField("nick_name")
     private String nickName;
 
-    @Schema(description = "姓名")
-    @TableField("name")
-    private String name;
-
     @Schema(description = "密码")
     @TableField("password")
     private String password;
+
+    @Schema(description = "年龄")
+    @TableField("age")
+    private Integer age;
+
+    @Schema(description = "性别")
+    @TableField("gender")
+    private Integer gender;
 
     @Schema(description = "创建时间")
     @TableField("create_time")

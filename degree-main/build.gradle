@@ -20,6 +20,7 @@ dependencies {
     implementation 'org.springframework.kafka:spring-kafka'
     implementation 'com.github.xiaoymin:knife4j-openapi3-jakarta-spring-boot-starter'
     implementation 'org.freemarker:freemarker'
+    implementation 'com.alibaba:easyexcel'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'junit:junit:4.13.1'

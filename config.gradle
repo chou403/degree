@@ -28,6 +28,7 @@ ext {
                     "nettyAllVersion"              : '4.1.101.Final',
                     "freemarkerVersion"            : '2.3.32',
                     "openapi3Version"              : '4.3.0',
+                    "easyexcelVersion"             : '3.3.2',
 
             ]
 
@@ -59,6 +60,7 @@ ext {
                     "nettyAll"              : "io.netty:netty-all:$version.nettyAllVersion",
                     "freemarker"            : "org.freemarker:freemarker:$version.freemarkerVersion",
                     "openapi3"              : "com.github.xiaoymin:knife4j-openapi3-jakarta-spring-boot-starter:$version.openapi3Version",
+                    "easyexcel"             : "com.alibaba:easyexcel:$version.easyexcelVersion",
             ]
 
 }
