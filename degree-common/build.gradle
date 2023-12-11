@@ -19,6 +19,7 @@ dependencies {
     implementation 'org.redisson:redisson-spring-data-31'
     implementation 'org.springframework.kafka:spring-kafka'
     implementation 'com.alibaba:easyexcel'
+    implementation 'io.swagger.core.v3:swagger-models-jakarta'
 
 }
 

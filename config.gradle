@@ -29,6 +29,7 @@ ext {
                     "freemarkerVersion"            : '2.3.32',
                     "openapi3Version"              : '4.3.0',
                     "easyexcelVersion"             : '3.3.2',
+                    "swaggerModelsJakartaVersion"  : '2.2.19',
 
             ]
 
@@ -61,6 +62,7 @@ ext {
                     "freemarker"            : "org.freemarker:freemarker:$version.freemarkerVersion",
                     "openapi3"              : "com.github.xiaoymin:knife4j-openapi3-jakarta-spring-boot-starter:$version.openapi3Version",
                     "easyexcel"             : "com.alibaba:easyexcel:$version.easyexcelVersion",
+                    "swaggerModelsJakarta"  : "io.swagger.core.v3:swagger-models-jakarta:$version.swaggerModelsJakartaVersion",
             ]
 
 }
