@@ -1,6 +1,9 @@
 package com.second.common.config;
 
 import com.second.common.aop.interceptor.AuthInterceptor;
+import jakarta.servlet.Filter;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -48,5 +51,14 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .maxAge(3600)
                 .allowCredentials(true);
     }
+
+//    @Bean
+//    public FilterRegistrationBean<Filter> traceFilter() {
+//        FilterRegistrationBean<Filter> registration = new FilterRegistrationBean<>();
+////        TraceFilter traceFilter = new TraceFilter();
+////        registration.setFilter(traceFilter);
+//        registration.addUrlPatterns("/*");
+//        return registration;
+//    }
 }
 

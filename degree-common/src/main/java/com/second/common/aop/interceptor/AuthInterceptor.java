@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.Arrays;
 
 /**
  * 拦截器，登录检查
@@ -26,6 +27,7 @@ public class AuthInterceptor implements HandlerInterceptor {
         String from = request.getHeader("from");
         String path = String.valueOf(request.getRequestURL());
         log.info("request url :{}", path);
+        log.info("request type :{}", request.getMethod());
 
         if (path.contains("/error")) {
             // 请求错误页面

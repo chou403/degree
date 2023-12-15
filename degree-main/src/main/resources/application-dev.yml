@@ -15,7 +15,7 @@ spring:
     #        proxy-target-class: false
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/degree?AllowPublicKeyRetrieval=True&serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=false
+        url: jdbc:mysql://localhost:3306/degree?allowPublicKeyRetrieval=True&serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=false
         username: root
         password: jsy251361
 #        type: com.zaxxer.hikari.HikariDataSource

@@ -15,7 +15,7 @@ import lombok.Setter;
 @Schema(description = "保存用户参数")
 public class UserSaveParamDTO {
 
-    private Long id;
+    private Integer userId;
 
     @NotBlank(message = "用户名不能为空")
     @Schema(description = "用户名")

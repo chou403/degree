@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class ExecutorConfig {
 
-    private static int maxPoolSize = Runtime.getRuntime().availableProcessors();
+    private static final int maxPoolSize = Runtime.getRuntime().availableProcessors();
     private volatile static ExecutorService executorService;
 
     public static ExecutorService getThreadPool() {

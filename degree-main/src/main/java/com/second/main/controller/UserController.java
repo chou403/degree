@@ -7,6 +7,7 @@ import com.second.main.entity.UserEntity;
 import com.second.main.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +21,7 @@ import java.util.List;
  * @author chouchou
  * @since 2023-12-05
  */
+@Slf4j
 @Tag(name = "用户")
 @RestController
 @RequestMapping("/userEntity")

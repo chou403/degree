@@ -21,15 +21,15 @@ import java.util.List;
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> implements UserService {
 
-    private final UserMapper sysUserMapper;
+    private final UserMapper userMapper;
 
-    public UserServiceImpl(UserMapper sysUserMapper) {
-        this.sysUserMapper = sysUserMapper;
+    public UserServiceImpl(UserMapper userMapper) {
+        this.userMapper = userMapper;
     }
 
     @Override
     public List<UserEntity> list() {
-        return sysUserMapper.selectList(null);
+        return userMapper.selectList(null);
     }
 
     @Override
@@ -44,7 +44,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
             entity.setUpdateTime(new Date());
         }
 
-        sysUserMapper.insert(entity);
+        userMapper.insert(entity);
 
         return Result.success();
     }
