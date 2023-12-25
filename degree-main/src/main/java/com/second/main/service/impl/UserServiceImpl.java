@@ -2,6 +2,7 @@ package com.second.main.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.second.common.bean.reponse.Result;
+import com.second.common.utils.StringUtil;
 import com.second.main.domains.dto.UserSaveParamDTO;
 import com.second.main.entity.UserEntity;
 import com.second.main.mapper.UserMapper;
@@ -36,8 +37,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
     public Result<Object> save(UserSaveParamDTO param) {
         UserEntity entity = new UserEntity();
         BeanUtils.copyProperties(param, entity);
-        if (entity.getUserId() == 0) {
-            entity.setUserId(null);
+        if (StringUtil.isNullOrEmpty(entity.getId())) {
             entity.setCreateTime(new Date());
             entity.setUpdateTime(new Date());
         } else {

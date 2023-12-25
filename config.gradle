@@ -3,7 +3,7 @@ ext {
     version =
             [
                     "lombokVersion"                : '1.18.30',
-                    "mysqlVersion"                 : '8.0.33',
+                    "mysqlVersion"                 : '8.2.0',
                     "mybatisPlusBootStarterVersion": '3.5.4.1',
                     "mybatisPlusGeneratorVersion"  : '3.5.4.1',
                     "swaggerVersion"               : '3.0.0',
@@ -31,12 +31,15 @@ ext {
                     "easyexcelVersion"             : '3.3.2',
                     "swaggerModelsJakartaVersion"  : '2.2.19',
 
+                    "shardingJdbcVersion"          : '5.4.1',
+                    "jaxbRuntimeVersion"           : '4.0.4',
+
             ]
 
     dependencies =
             [
                     "lombok"                : "org.projectlombok:lombok:$version.lombokVersion",
-                    "mysqlConnectorJava"    : "mysql:mysql-connector-java:$version.mysqlVersion",
+                    "mysqlConnectorJava"    : "com.mysql:mysql-connector-j:$version.mysqlVersion",
                     "mybatisPlusBootStarter": "com.baomidou:mybatis-plus-boot-starter:$version.mybatisPlusBootStarterVersion",
                     "mybatisPlusGenerator"  : "com.baomidou:mybatis-plus-generator:$version.mybatisPlusGeneratorVersion",
                     "joolJava8"             : "org.jooq:jool-java-8:$version.jooqVersion",
@@ -63,6 +66,19 @@ ext {
                     "openapi3"              : "com.github.xiaoymin:knife4j-openapi3-jakarta-spring-boot-starter:$version.openapi3Version",
                     "easyexcel"             : "com.alibaba:easyexcel:$version.easyexcelVersion",
                     "swaggerModelsJakarta"  : "io.swagger.core.v3:swagger-models-jakarta:$version.swaggerModelsJakartaVersion",
+
+                    "shardingJdbc"          : "org.apache.shardingsphere:shardingsphere-jdbc-core:$version.shardingJdbcVersion",
+//                    "shardingTransactionXa" : "org.apache.shardingsphere:shardingsphere-transaction-xa-core:$version.shardingTransactionXaVersion",
+
+//                    "jaxbXml"               : "com.sun.xml.bind:jaxb-impl:$version.jaxbApiVersion",
+//                    "jaxbCore"              : "com.sun.xml.bind:jaxb-core:$version.jaxbApiVersion",
+//                    "jakartaXmlBindApi"     : "jakarta.xml.bind:jakarta.xml.bind-api:$version.jakartaXmlBindApiVersion",
+//                    "jakartaActivationApi"  : "jakarta.activation:jakarta.activation-api:$version.jakartaActivationApiVersion",
+
+//                    "springWsCore"          : "org.springframework.ws:spring-ws-core:$version.springWsCoreVersion",
+//                    "jakartaTransactionApi" : "jakarta.transaction:jakarta.transaction-api:$version.jakartaTransactionApiVersion",
+//                    "jakartaAnnotationApi"  : "jakarta.annotation:jakarta.annotation-api:$version.jakartaAnnotationApiVersion",
+                    "jaxbRuntime"           : "org.glassfish.jaxb:jaxb-runtime:$version.jaxbRuntimeVersion",
             ]
 
 }

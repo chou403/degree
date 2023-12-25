@@ -1,0 +1,194 @@
+# 不配置则默认单机模式
+mode:
+    # 运行模式类型。可选配置：Standalone、Cluster
+    type: Standalone
+    # 持久化仓库配置
+    repository:
+        # 持久化仓库类型
+        type: JDBC
+# 数据源配置
+dataSources:
+    # 数据源名称 可配置多个
+    ds_0:
+        # 数据源完整类名
+        dataSourceClassName: com.zaxxer.hikari.HikariDataSource
+        # 数据库驱动类名，以数据库连接池自身配置为准
+        driverClassName: com.mysql.cj.jdbc.Driver
+        # 数据库 URL 连接，以数据库连接池自身配置为准
+        jdbcUrl: jdbc:mysql://localhost:3306/degree0?allowPublicKeyRetrieval=True&serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=false
+        # 数据库用户名，以数据库连接池自身配置为准
+        username: root
+        # 数据库密码，以数据库连接池自身配置为准
+        password: jsy251361
+#        connectionTimeoutMilliseconds: 30000
+#        idleTimeoutMilliseconds: 60000
+#        maxLifetimeMilliseconds: 1800000
+#        maxPoolSize: 50
+#        minPoolSize: 1
+    ds_1:
+        dataSourceClassName: com.zaxxer.hikari.HikariDataSource
+        driverClassName: com.mysql.cj.jdbc.Driver
+        jdbcUrl: jdbc:mysql://localhost:3306/degree1?allowPublicKeyRetrieval=True&serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=false
+        username: root
+        password: jsy251361
+#        connectionTimeoutMilliseconds: 30000
+#        idleTimeoutMilliseconds: 60000
+#        maxLifetimeMilliseconds: 1800000
+#        maxPoolSize: 50
+#        minPoolSize: 1
+rules:
+- !SHARDING
+    # 数据分片规则配置
+    tables:
+        # 逻辑表名称
+        user:
+            # 由数据源名 + 表名组成（参考 Inline 语法规则）
+            actualDataNodes: ds_$->{0..1}.user_->{0..1}
+            # 分表策略
+            tableStrategy:
+                # 用于单分片键的标准分片场景
+                standard:
+                    # 分片列名称
+                    shardingColumn: id
+                    # 分片算法名称
+                    shardingAlgorithmName: user_inline
+#            # 分布式序列策略
+#            keyGenerateStrategy:
+#                # 自增列名称，缺省表示不使用自增主键生成器
+#                column:
+#                # 分布式序列算法名称
+#                keyGeneratorName：
+    # 分布式序列算法名称
+    defaultDatabaseStrategy:
+        standard:
+            shardingColumn: id
+            shardingAlgorithmName: database_inline
+    # 分片算法配置
+    shardingAlgorithms:
+        # 分片算法名称
+        database_inline:
+            # 分片算法类型
+            type: INLINE
+            # 分片算法属性配置
+            props:
+                algorithm-expression: ds_$->{id % 2}
+        user_inline:
+            type: INLINE
+            props:
+                algorithm-expression: user_$->{id % 2}
+    # 分布式序列算法配置
+    keyGenerators:
+        snowflake:
+            type: SNOWFLAKE
+props:
+    sql-show: true
+#transaction:
+#    defaultType: XA
+#    providerType: Atomikos
+
+        #        autoTables:
+        #            # 取模
+        #            t_auto_order_mod:
+        #                actualDataSources: ds$->{1..2}
+        #                shardingStrategy:
+        #                    standard:
+        #                        shardingColumn: id
+        #                        shardingAlgorithmName: auto_order_mod
+        #                # 分布式序列策略
+        #                keyGenerateStrategy:
+        #                    # 自增列名称，缺省表示不使用自增主键生成器
+        #                    column: id
+        #                    # 分布式序列算法名称
+        #                    keyGeneratorName: snowflake
+        #            # 散列取模
+        #            t_auto_order_hash_mod:
+        #                actualDataSources: ds1
+        #                shardingStrategy:
+        #                    standard:
+        #                        shardingColumn: id
+        #                        shardingAlgorithmName: auto_order_hash_mod
+        #                # 分布式序列策略
+        #                keyGenerateStrategy:
+        #                    # 自增列名称，缺省表示不使用自增主键生成器
+        #                    column: id
+        #                    # 分布式序列算法名称
+        #                    keyGeneratorName: snowflake
+        #            # 容量范围
+        #            t_auto_order_volume_range:
+        #                actualDataSources: ds$->{1..2}
+        #                shardingStrategy:
+        #                    standard:
+        #                        shardingColumn: price
+        #                        shardingAlgorithmName: auto_order_volume_range
+        #                # 分布式序列策略
+        #                keyGenerateStrategy:
+        #                    # 自增列名称，缺省表示不使用自增主键生成器
+        #                    column: id
+        #                    # 分布式序列算法名称
+        #                    keyGeneratorName: snowflake
+        #            # 边界范围
+        #            t_auto_order_boundary_range:
+        #                actualDataSources: ds$->{1..2}
+        #                shardingStrategy:
+        #                    standard:
+        #                        shardingColumn: price
+        #                        shardingAlgorithmName: auto_order_boundary_range
+        #                # 分布式序列策略
+        #                keyGenerateStrategy:
+        #                    # 自增列名称，缺省表示不使用自增主键生成器
+        #                    column: id
+        #                    # 分布式序列算法名称
+        #                    keyGeneratorName: snowflake
+        #            # 自动日期间隔
+        #            t_auto_order_auto_interval:
+        #                actualDataSources: ds$->{1..2}
+        #                shardingStrategy:
+        #                    standard:
+        #                        shardingColumn: create_time
+        #                        shardingAlgorithmName: auto_order_auto_interval
+        #                # 分布式序列策略
+        #                keyGenerateStrategy:
+        #                    # 自增列名称，缺省表示不使用自增主键生成器
+        #                    column: order_id
+        #                    # 分布式序列算法名称
+        #                    keyGeneratorName: snowflake
+        #        # 分片算法配置
+        #        shardingAlgorithms:
+        #            # 取模
+        #            auto_order_mod:
+        #                type: MOD
+        #                props:
+        #                    sharding-count: 6
+        #            # 散列取模
+        #            auto_order_hash_mod:
+        #                type: HASH_MOD
+        #                props:
+        #                    sharding-count: 6
+        #            # 容量范围
+        #            auto_order_volume_range:
+        #                type: VOLUME_RANGE
+        #                props:
+        #                    range-lower: 0
+        #                    range-upper: 20000
+        #                    sharding-volume: 10000
+        #            # 边界范围
+        #            auto_order_boundary_range:
+        #                type: BOUNDARY_RANGE
+        #                props:
+        #                    sharding-ranges: 10,15,100,12000,16000
+        #            # 自动日期间隔
+        #            auto_order_auto_interval:
+        #                type: AUTO_INTERVAL
+        #                props:
+        #                    datetime-lower: "2023-05-07 00:00:00"
+        #                    datetime-upper: "2023-05-10 00:00:00"
+        #                    sharding-seconds: 86400
+        #        # 分布式序列算法配置（如果是自动生成的，在插入数据的sql中就不要传id，null也不行，直接插入字段中就不要有主键的字段）
+        #        keyGenerators:
+        #            # 分布式序列算法名称
+        #            snowflake:
+        #                # 分布式序列算法类型
+        #                type: SNOWFLAKE
+
+
+

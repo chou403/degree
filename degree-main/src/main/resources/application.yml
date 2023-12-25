@@ -1,3 +1,164 @@
+# 检验 使用 jdk 还是 cglib
+ond:
+    pro: 111
+mybatis-plus:
+    mapper-locations: classpath*:/mapper/*.xml
+    configuration:
+        log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+        cache-enabled: true
+server:
+    port: 8085
 spring:
-    profiles:
-        active: dev
+    application:
+        name: main-server
+    #    aop:
+    #        proxy-target-class: false
+    datasource:
+#        driver-class-name: org.apache.shardingsphere.driver.ShardingSphereDriver
+#        url: jdbc:shardingsphere:classpath:sharding-config.yaml
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/degree?allowPublicKeyRetrieval=True&serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=false
+        username: root
+        password: jsy251361
+
+    jackson:
+        date-format: yyyy-MM-dd HH:mm:ss
+        time-zone: GMT+8
+    # redis setting
+    data:
+        redis:
+            database: 1
+            host: localhost
+            port: 6379
+            password: 123456
+            jedis:
+                pool:
+                    max-active: 1000
+                    max-wait: -1ms
+                    max-idle: 50
+                    min-idle: 1
+    # cache setting
+    cache:
+        redis:
+            time-to-live: 60000
+    # rabbitmq setting
+    rabbitmq:
+        host: localhost
+        port: 5672
+        username: admin
+        password: 123456
+        virtual-host: /
+        publisher-returns: true
+
+    # kafka setting
+    kafka:
+        # kafka 服务器地址，与 kafka server.properties listeners 对应
+        bootstrap-servers: localhost:9092
+        producer:
+            # 当有多个消息需要被发送到同一个分区时，生产者会把它们放在同一个批次里，该参数指定了一个批次
+            batch-size: 16384
+            # acks=0 ： 生产者在成功写入消息之前不会等待任何来自服务器的响应。
+            # acks=1 ： 只要集群的首领节点收到消息，生产者就会收到一个来自服务器成功响应。
+            # acks=all ：只有当所有参与复制的节点全部收到消息时，生产者才会收到一个来自服务器的成功响应。
+            acks: all
+            # 消息发送重试次数，发生错误后，消息重发的次数，开启事务必须设置大于 0
+            retries: 3
+            # 事务前缀 开启事务，必须在开启了事务的方法中发送，否则报错
+            transaction-id-prefix: tx_
+            # 生产者内存缓冲区的大小
+            buffer-memory: 33554432
+            # 键的序列化方式
+            # key-serializer: org.apache.kafka.common.serialization.StringSerializer
+            key-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+            # 值的序列化方式（建议使用 json，这种序列化方式可以无需额外配置传输实体类）
+            # value-serializer: org.apache.kafka.common.serialization.StringSerializer
+            value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+            properties:
+                # 提交延迟
+                linger:
+                    ms: 2000
+                # 自定义分区器
+                partitioner:
+                    class: com.second.main.config.kafka.CustomizePartitioner
+        consumer:
+            # 默认的消费组ID
+            group-id: kafka-group
+            # 是否自动提交offset，默认值是true，为了避免出现重复数据和数据丢失，可以把它设置为false，然后手动提交偏移量
+            enable-auto-commit: false
+            # 提交offset延时
+            auto-commit-interval: 2000
+            # 当kafka中没有初始offset或offset超出范围时将自动重置offset
+            # earliest:重置为分区中最小的offset;
+            # latest:重置为分区中最新的offset(消费分区中新产生的数据);
+            # none:只要有一个分区不存在已提交的offset,就抛出异常;
+            auto-offset-reset: latest
+            # 这个参数定义了poll方法最多可以拉取多少条消息，默认值为500。如果在拉取消息的时候新消息不足500条，那有多少返回多少；如果超过500条，每次只返回500。
+            # 这个默认值在有些场景下太大，有些场景很难保证能够在5min内处理完500条消息，
+            # 如果消费者无法在5分钟内处理完500条消息的话就会触发reBalance,
+            # 然后这批消息会被分配到另一个消费者中，还是会处理不完，这样这批消息就永远也处理不完。
+            # 要避免出现上述问题，提前评估好处理一条消息最长需要多少时间，然后覆盖默认的max.poll.records参数
+            # 注：需要开启BatchListener批量监听才会生效，如果不开启BatchListener则不会出现reBalance情况
+            max-poll-records: 3
+            # 键的序列化方式
+            # key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+            key-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+            # 值的序列化方式
+            # value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+            value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+            properties:
+                # 配置消费者的 Json 反序列化的可信赖包，反序列化实体类需要
+                spring:
+                    json:
+                        trusted:
+                            packages: "*"
+                # 消费会话超时时间（超过这个时间 consumer 没有发送心跳，就会触发 reBalance 操作）
+                session:
+                    timeout:
+                        ms: 120000
+                # 两次poll之间的最大间隔，默认值为5分钟。如果超过这个间隔会触发reBalance
+                max:
+                    poll:
+                        interval:
+                            ms: 600000
+                # 消费请求的超时时间
+                request:
+                    timeout:
+                        ms: 18000
+        listener:
+            # 在侦听器容器中运行的线程数，一般设置为 机器数*分区数
+            concurrency: 4
+            # 消费监听接口监听的主题不存在时，默认会报错，所以设置为false忽略错误
+            missing-topics-fatal: false
+            # 批量监听
+            type: batch
+            # 自动提交关闭，需要设置手动消息确认
+            ack-mode: manual_immediate
+            # 两次poll之间的最大间隔，默认值为5分钟。如果超过这个间隔会触发reBalance
+            poll-timeout: 600000
+
+    main:
+        allow-bean-definition-overriding: true
+rabbitmq:
+    core-exchange: coreExchange
+    core-routing: api.core.#
+    core-queue-name: api.core
+
+#redisson setting
+redisson:
+    singleserverconfig:
+        address: "redis://${spring.data.redis.host}:${spring.data.redis.port}"
+        password: ${spring.data.redis.password}
+        database: ${spring.data.redis.database}
+
+async:
+    executor:
+        thread:
+            # 配置核心线程数
+            core_pool_size: 5
+            # 配置最大线程数
+            max_pool_size: 5
+            # 配置队列大小
+            queue_capacity: 9999
+            # 配置线程池中线程的名称前缀
+            name:
+                prefix: async-service-

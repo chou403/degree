@@ -14,13 +14,18 @@ dependencies {
     implementation 'org.jooq:jool-java-8'
     implementation 'com.google.guava:guava'
     implementation 'cn.hutool:hutool-all'
-    implementation 'mysql:mysql-connector-java'
+    implementation 'com.mysql:mysql-connector-j'
     implementation 'org.springframework.retry:spring-retry'
     implementation 'org.springframework.amqp:spring-rabbit'
     implementation 'org.springframework.kafka:spring-kafka'
     implementation 'com.github.xiaoymin:knife4j-openapi3-jakarta-spring-boot-starter'
     implementation 'org.freemarker:freemarker'
-    implementation 'com.alibaba:easyexcel'
+    implementation ("com.alibaba:easyexcel") {
+        exclude module: 'jaxb-core'
+    }
+
+    implementation 'org.apache.shardingsphere:shardingsphere-jdbc-core'
+//    implementation 'org.glassfish.jaxb:jaxb-runtime'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'junit:junit:4.13.1'

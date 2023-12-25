@@ -24,8 +24,8 @@ import java.util.Date;
 @Schema(name = "UserEntity", description = "用户表")
 public class UserEntity extends Model<UserEntity> {
 
-    @TableId(value = "user_id", type = IdType.AUTO)
-    private Integer userId;
+    @TableId(value = "id", type = IdType.AUTO)
+    private Integer id;
 
     @Schema(description = "账号")
     @TableField("user_code")
@@ -61,6 +61,6 @@ public class UserEntity extends Model<UserEntity> {
 
     @Override
     public Serializable pkVal() {
-        return this.userId;
+        return this.id;
     }
 }

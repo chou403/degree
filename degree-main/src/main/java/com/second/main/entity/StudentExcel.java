@@ -2,16 +2,12 @@ package com.second.main.entity;
 
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.alibaba.excel.annotation.write.style.ColumnWidth;
-import com.alibaba.excel.annotation.write.style.HeadFontStyle;
-import com.alibaba.excel.annotation.write.style.HeadStyle;
-import com.alibaba.excel.enums.BooleanEnum;
 import com.second.common.aop.annotations.ExcelValid;
 import com.second.common.aop.annotations.NumberValid;
 import com.second.main.utils.GenderConverter;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -44,7 +40,7 @@ public class StudentExcel implements Serializable {
     @NumberValid(message = "年龄不得小于0")
     private Integer age;
 
-    @ExcelProperty(value = "性别",converter = GenderConverter.class)
+    @ExcelProperty(value = "性别", converter = GenderConverter.class)
     @ColumnWidth(20)
     private Integer gender;
 

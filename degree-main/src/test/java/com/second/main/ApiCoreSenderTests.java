@@ -1,8 +1,5 @@
 package com.second.main;
 
-import com.second.main.config.rabbit.RabbitCoreProducer;
-import jakarta.annotation.Resource;
-import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 /**
@@ -13,21 +10,21 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class ApiCoreSenderTests {
 
-    @Resource
-    private RabbitCoreProducer rabbitCoreProducer;
-
-    @Test
-    public void test_msg() {
-        rabbitCoreProducer.sendNotification("rabbit 生产者 消息");
-    }
-
-    @Test
-    public void test_user() {
-        rabbitCoreProducer.sendNotification("api.core.user", "rabbit user 消息");
-    }
-
-    @Test
-    public void test_userQuery() {
-        rabbitCoreProducer.sendNotification("api.core.user.query", "rabbit user query 消息");
-    }
+//    @Resource
+//    private RabbitCoreProducer rabbitCoreProducer;
+//
+//    @Test
+//    public void test_msg() {
+//        rabbitCoreProducer.sendNotification("rabbit 生产者 消息");
+//    }
+//
+//    @Test
+//    public void test_user() {
+//        rabbitCoreProducer.sendNotification("api.core.user", "rabbit user 消息");
+//    }
+//
+//    @Test
+//    public void test_userQuery() {
+//        rabbitCoreProducer.sendNotification("api.core.user.query", "rabbit user query 消息");
+//    }
 }

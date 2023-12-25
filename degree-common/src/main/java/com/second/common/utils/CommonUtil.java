@@ -3,6 +3,7 @@ package com.second.common.utils;
 import com.second.common.consts.BaseConstants;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -162,5 +163,13 @@ public class CommonUtil {
             result.add(value);
         }
         return result;
+    }
+
+    /**
+     * 格式化数字 千分位
+     */
+    public static String formatAmount(BigDecimal amount) {
+        DecimalFormat decimalFormat = new DecimalFormat("###,##0.00");
+        return decimalFormat.format(amount);
     }
 }
