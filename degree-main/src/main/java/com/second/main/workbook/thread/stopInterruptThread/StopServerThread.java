@@ -3,7 +3,7 @@ package com.second.main.workbook.thread.stopInterruptThread;
 import java.io.FileWriter;
 
 /**
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date} 2023/8/23
  * {@code @description} stop server thread
  */

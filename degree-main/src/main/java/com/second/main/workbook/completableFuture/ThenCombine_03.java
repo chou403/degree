@@ -5,7 +5,7 @@ import com.second.common.utils.ThreadTool;
 import java.util.concurrent.CompletableFuture;
 
 /**
- * {@code @author} chouchou
+ * {@code @author} chou401
  * {@code @date} 2023/3/29
  * {@code @className} ApplyAsync_03
  * {@code @description} thenCombine

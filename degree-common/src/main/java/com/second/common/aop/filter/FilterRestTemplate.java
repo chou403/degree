@@ -7,7 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  * 将 RestTemplate 作为底层包装器
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date}    2023/5/4 15:04
  */
 @AllArgsConstructor

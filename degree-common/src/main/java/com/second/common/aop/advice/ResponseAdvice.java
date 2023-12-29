@@ -13,7 +13,7 @@ import jakarta.annotation.Nullable;
 /**
  * controller 返回数据统一包装
  * 如果引入了swagger或knife4j的文档生成组件，这里需要仅扫描自己项目的包，否则文档无法正常生成
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date}    2023/5/4 17:51
  */
 @RestControllerAdvice(basePackages = "com.second.degree")

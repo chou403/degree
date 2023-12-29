@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date} 2023/11/27
  * {@code @description} rabbit mq config
  */

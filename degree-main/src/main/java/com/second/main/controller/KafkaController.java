@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date} 2023/11/29
  * {@code @description} kafka controller
  */

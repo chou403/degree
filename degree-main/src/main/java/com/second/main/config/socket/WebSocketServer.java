@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 /**
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date} 2023/7/14
  * {@code @description} WebSocketServer
  */

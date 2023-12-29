@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
 /**
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date} 2023/7/15
  * {@code @description} WebSocket config
  */

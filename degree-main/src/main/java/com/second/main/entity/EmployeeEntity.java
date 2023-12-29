@@ -14,7 +14,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @author chouchou
+ * {@code @author} chou401
  * @since 2023-12-06
  */
 @Getter

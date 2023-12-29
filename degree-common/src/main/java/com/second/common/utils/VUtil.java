@@ -6,7 +6,7 @@ import com.second.common.bean.handle.ThrowExceptionFunction;
 
 /**
  * 方法使用判断
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date}    2023/4/23 17:45
  */
 public class VUtil {

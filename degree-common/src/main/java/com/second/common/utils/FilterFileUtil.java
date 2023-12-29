@@ -1,7 +1,7 @@
 package com.second.common.utils;
 
 /**
- * {@code @author} chouchou
+ * {@code @author} chou401
  * {@code @date} 2022/11/17
  * {@code @className} FilterFileUtil
  * {@code @description} 删除无用文件

@@ -12,7 +12,7 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import java.util.List;
 
 /**
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date} 2023/11/28
  * {@code @description} kafka consumer
  */

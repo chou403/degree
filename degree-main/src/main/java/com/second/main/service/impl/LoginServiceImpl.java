@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 /**
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date} 2023/7/14
  * {@code @description} login service impl
  */
@@ -34,7 +34,7 @@ public class LoginServiceImpl implements LoginService {
 
     /**
      * 账号登录
-     * {@code @author} chouchou
+     * {@code @author} chou401
      * {@code @date} 2023/7/15
      *
      * @param dto

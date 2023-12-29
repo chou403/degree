@@ -18,7 +18,7 @@ import java.nio.charset.Charset;
 import java.util.concurrent.TimeUnit;
 
 /**
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date} 2023/11/15
  * {@code @description} redis lock 切面
  */

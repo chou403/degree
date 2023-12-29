@@ -11,11 +11,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 /**
- * @author chouchou
+ * {@code @author} chou401
  * @since 2023-12-06
  */
 @Slf4j
@@ -37,14 +36,20 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
     public Result<Object> save(UserSaveParamDTO param) {
         UserEntity entity = new UserEntity();
         BeanUtils.copyProperties(param, entity);
-        if (StringUtil.isNullOrEmpty(entity.getId())) {
-            entity.setCreateTime(new Date());
-            entity.setUpdateTime(new Date());
-        } else {
-            entity.setUpdateTime(new Date());
-        }
+//        if (StringUtil.isNullOrEmpty(entity.getId())) {
+//            entity.setCreateTime(new Date());
+//            entity.setUpdateTime(new Date());
+//        } else {
+//            entity.setUpdateTime(new Date());
+//        }
 
-        userMapper.insert(entity);
+//        userMapper.insert(entity);
+
+        if (StringUtil.isNullOrEmpty(entity.getId())) {
+            userMapper.insertUserInfo(entity);
+        } else {
+            userMapper.updateUserInfo(entity);
+        }
 
         return Result.success();
     }

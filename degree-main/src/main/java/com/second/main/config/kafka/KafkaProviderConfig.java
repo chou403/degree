@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date} 2023/11/29
  * {@code @description} kafka 生产者配置，也可以写在 yml，这个文件会覆盖 yml
  */

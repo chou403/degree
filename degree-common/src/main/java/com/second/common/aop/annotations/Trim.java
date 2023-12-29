@@ -3,7 +3,7 @@ package com.second.common.aop.annotations;
 import java.lang.annotation.*;
 
 /**
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date} 2023/12/15
  * {@code @description} 去除首尾空格的注解
  */

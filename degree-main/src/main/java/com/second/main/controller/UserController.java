@@ -18,7 +18,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * @author chouchou
+ * {@code @author} chou401
  * @since 2023-12-05
  */
 @Slf4j

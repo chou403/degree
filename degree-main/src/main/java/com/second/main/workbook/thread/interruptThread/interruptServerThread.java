@@ -1,7 +1,7 @@
 package com.second.main.workbook.thread.interruptThread;
 
 /**
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date} 2023/8/23
  * {@code @description} interrupt thread
  */

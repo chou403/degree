@@ -8,7 +8,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * {@code @author} chouchou
+ * {@code @author} chou401
  * {@code @date} 2023/3/28
  * {@code @className} TestMapperScan
  * {@code @description} mapper scan

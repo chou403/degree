@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * login dto
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date}    2023/4/12 15:58
  */
 @Component

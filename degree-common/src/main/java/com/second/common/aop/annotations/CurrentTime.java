@@ -1,5 +1,7 @@
 package com.second.common.aop.annotations;
 
+import org.apache.ibatis.mapping.SqlCommandType;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -7,14 +9,12 @@ import java.lang.annotation.Target;
 
 /**
  * {@code @author}  chou401
- * {@code @date} 2023/12/1
- * {@code @description} 多线程事务注解：子事务
- * 用在被调用方(开启线程的方法)，无需传入参数
+ * {@code @date} 2023/12/29
+ * {@code @description} 自动设置当前时间
  */
-@Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface SonTransaction {
+@Target({ElementType.FIELD})
+public @interface CurrentTime {
 
-    String value() default "";
-
+    SqlCommandType value() default SqlCommandType.INSERT;
 }

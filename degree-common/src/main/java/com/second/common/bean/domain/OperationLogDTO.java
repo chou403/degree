@@ -7,7 +7,7 @@ import lombok.ToString;
 import lombok.experimental.Accessors;
 
 /**
- * {@code @author} chouchou
+ * {@code @author} chou401
  * {@code @date} 2022/12/2
  * {@code @className} OperationLogDTO
  * {@code @description} 操作记录

@@ -4,7 +4,7 @@ import java.util.function.Consumer;
 
 /**
  * 空值与非空值分支处理
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date}    2023/4/23 17:53
  */
 @FunctionalInterface

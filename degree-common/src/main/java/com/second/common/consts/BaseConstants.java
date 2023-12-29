@@ -1,7 +1,7 @@
 package com.second.common.consts;
 
 /**
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date} 2023/8/21
  * {@code @description} base code
  */

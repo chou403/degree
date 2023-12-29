@@ -1,7 +1,7 @@
 package com.second.common.bean;
 
 /**
- * {@code @author} chouchou
+ * {@code @author} chou401
  * {@code @date} 2022/12/14
  * {@code @className} BusinessTypeEnum
  * {@code @description} 切面日志枚举

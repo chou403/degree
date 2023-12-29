@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 /**
  * 服务器返回给客户端的统一数据封装
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date}    2023/4/7 14:59
  */
 @Data

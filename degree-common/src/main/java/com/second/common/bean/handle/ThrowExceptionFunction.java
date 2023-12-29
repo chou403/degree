@@ -2,7 +2,7 @@ package com.second.common.bean.handle;
 
 /**
  * 抛异常接口
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date}    2023/4/23 17:43
  */
 @FunctionalInterface

@@ -10,7 +10,7 @@ import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 import java.util.Collections;
 
 /**
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date} 2023/12/5
  * {@code @description}
  */
@@ -31,7 +31,7 @@ public class GeneratorMySQL {
     /**
      * 作者
      */
-    public static final String AUTHOR = "chouchou";
+    public static final String AUTHOR = "chou401";
     /**
      * java代码保存目录
      */

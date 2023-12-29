@@ -3,7 +3,7 @@ package com.second.main.workbook.test;
 import java.lang.reflect.Type;
 
 /**
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date} 2023/8/23
  * {@code @description} test thread
  */

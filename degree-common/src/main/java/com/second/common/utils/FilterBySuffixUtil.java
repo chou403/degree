@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.FilenameFilter;
 
 /**
- * {@code @author} chouchou
+ * {@code @author} chou401
  * {@code @date} 2022/11/17
  * {@code @className} FilterBySuffix
  * {@code @description} 读取出某个文件夹下面的所有某后缀名的文件

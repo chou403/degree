@@ -12,7 +12,7 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
- * {@code @author} chouchou
+ * {@code @author} chou401
  * {@code @date} 2023/3/27
  * {@code @className} TestMapperScanner
  * {@code @description} mapper scanner

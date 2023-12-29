@@ -6,7 +6,7 @@ import com.second.main.domains.dto.UserSaveParamDTO;
 import com.second.main.entity.UserEntity;
 
 /**
- * @author chouchou
+ * {@code @author} chou401
  * @since 2023-12-06
  */
 public interface UserService extends IService<UserEntity> {

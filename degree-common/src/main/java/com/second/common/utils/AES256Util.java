@@ -2,7 +2,7 @@ package com.second.common.utils;
 
 /**
  * AES256 加密&解密
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date}    2023/4/26 16:11
  */
 public class AES256Util {

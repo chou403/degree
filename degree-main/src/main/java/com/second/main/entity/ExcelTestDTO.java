@@ -5,12 +5,14 @@ import com.second.common.aop.annotations.ExplicitConstraint;
 import com.second.common.excel.BaseEasyExcel;
 import com.second.main.constraint.GenderExplicitConstraint;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * {@code @author}  chou401
  * {@code @date} 2023/12/28
  * {@code @description}
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 public class ExcelTestDTO extends BaseEasyExcel {
 

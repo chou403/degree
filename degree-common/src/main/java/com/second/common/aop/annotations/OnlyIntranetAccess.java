@@ -3,7 +3,7 @@ package com.second.common.aop.annotations;
 import java.lang.annotation.*;
 
 /**
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date} 2023/11/21
  * {@code @description} 内外网访问权限判断
  */

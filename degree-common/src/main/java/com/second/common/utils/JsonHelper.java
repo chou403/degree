@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 /**
  * jackson json相关操作
  *
- * @author Administrator
+ * {@code @author} Administrator
  */
 public class JsonHelper {
 

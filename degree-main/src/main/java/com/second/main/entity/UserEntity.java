@@ -5,16 +5,19 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import com.second.common.aop.annotations.CurrentBy;
+import com.second.common.aop.annotations.CurrentTime;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.apache.ibatis.mapping.SqlCommandType;
 
 import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @author chouchou
+ * {@code @author} chou401
  * @since 2023-12-06
  */
 @Getter
@@ -52,12 +55,24 @@ public class UserEntity extends Model<UserEntity> {
     private Integer gender;
 
     @Schema(description = "创建时间")
+    @CurrentTime
     @TableField("create_time")
     private Date createTime;
 
+    @Schema(description = "创建人")
+    @CurrentBy
+    @TableField("creator")
+    private String creator;
+
     @Schema(description = "修改时间")
+    @CurrentTime(SqlCommandType.UPDATE)
     @TableField("update_time")
     private Date updateTime;
+
+    @Schema(description = "修改人")
+    @CurrentBy(SqlCommandType.UPDATE)
+    @TableField("updater")
+    private String updater;
 
     @Override
     public Serializable pkVal() {

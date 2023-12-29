@@ -14,7 +14,7 @@ import java.lang.reflect.Field;
 import java.util.Objects;
 
 /**
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date} 2023/12/15
  * {@code @description} 去重首尾空格处理实现
  */

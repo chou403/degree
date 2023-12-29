@@ -3,7 +3,7 @@ package com.second.main.domains;
 import lombok.Data;
 
 /**
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date} 2023/7/15
  * {@code @description} 登录 参数
  */

@@ -5,7 +5,7 @@ import com.second.common.bean.BusinessTypeEnum;
 import java.lang.annotation.*;
 
 /**
- * {@code @author} chouchou
+ * {@code @author} chou401
  * {@code @date} 2022/12/2
  * {@code @className} OperationLog
  * {@code @description} 记录操作

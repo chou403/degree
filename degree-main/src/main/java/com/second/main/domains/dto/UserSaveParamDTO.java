@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date} 2023/12/5
  * {@code @description}
  */
@@ -15,7 +15,7 @@ import lombok.Setter;
 @Schema(description = "保存用户参数")
 public class UserSaveParamDTO {
 
-    private Integer userId;
+    private Integer id;
 
     @NotBlank(message = "用户名不能为空")
     @Schema(description = "用户名")
@@ -24,7 +24,4 @@ public class UserSaveParamDTO {
     @Schema(description = "昵称")
     private String nickName;
 
-    @NotBlank(message = "姓名不能为空")
-    @Schema(description = "姓名")
-    private String name;
 }

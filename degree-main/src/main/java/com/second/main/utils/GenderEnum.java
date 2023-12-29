@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 /**
  * 性别枚举
  *
- * @author william@StarImmortal
+ * {@code @author} william@StarImmortal
  */
 @Getter
 @AllArgsConstructor

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * ApplicationContextHelper
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date}    2023/4/12 16:02
  */
 @Slf4j

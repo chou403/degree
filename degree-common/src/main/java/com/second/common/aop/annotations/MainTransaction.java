@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date} 2023/12/1
  * {@code @description} 多线程事务注解：主事务
  * 在调用方，其参数为必填，参数值为本方法中调用的方法开启的线程数，如：在这个方法中调用的方法中有2个方法用@Async注解开启了子线程，

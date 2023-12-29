@@ -3,7 +3,7 @@ package com.second.main;
 import org.springframework.boot.test.context.SpringBootTest;
 
 /**
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date} 2023/11/27
  * {@code @description} rabbit api core test
  */

@@ -7,7 +7,7 @@ import com.second.main.service.UserTokenService;
 import org.springframework.stereotype.Service;
 
 /**
- * @author chouchou
+ * {@code @author} chou401
  * @since 2023-12-06
  */
 @Service

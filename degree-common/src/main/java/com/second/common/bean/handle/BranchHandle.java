@@ -2,7 +2,7 @@ package com.second.common.bean.handle;
 
 /**
  * if 分支操作
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date}    2023/4/23 17:48
  */
 @FunctionalInterface

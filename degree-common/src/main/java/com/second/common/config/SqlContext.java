@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 
 /**
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date} 2023/12/1
  * {@code @description} 获取 sqlSession
  */

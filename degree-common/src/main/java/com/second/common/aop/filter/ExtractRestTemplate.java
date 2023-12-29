@@ -7,7 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  * 对 FilterRestTemplate 进行包装扩展
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date}    2023/5/4 15:05
  */
 public class ExtractRestTemplate extends FilterRestTemplate {

@@ -3,7 +3,7 @@ package com.second.common.utils;
 import com.second.common.consts.BaseConstants;
 
 /**
- * {@code @author}  chouchou
+ * {@code @author}  chou401
  * {@code @date} 2023/8/21
  * {@code @description} string utils
  */
