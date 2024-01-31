@@ -206,7 +206,7 @@ public class JsonHelper {
     public static <T> List<T> listMapToDto(Class<T> clazz, List<Map> list) {
         return list
                 .stream()
-                .map(item -> JsonHelper.jsonToDto(clazz, item))
+                .map(item -> jsonToDto(clazz, item))
                 .collect(Collectors.toList());
     }
 
